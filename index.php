@@ -1,0 +1,64 @@
+<?php
+if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+
+date_default_timezone_set('Europe/Paris');
+date_default_timezone_get();
+if (isset($_POST["nomUser"])){
+$_SESSION["nomUser"]=$_POST["nomUser"];
+$_SESSION["prenomUser"]=$_POST["prenomUser"];
+$_SESSION["mdpUser"]=$_POST["mdpUser"];
+$_SESSION["pseudoUser"]=$_POST["pseudoUser"];
+$_SESSION["emailUser"]=$_POST["emailUser"];
+}
+// if(isset($_POST["emailUser"])){
+// if(!isset($_COOKIE['utilisateur'])||empty($_COOKIE['utilisateur'])){
+// setcookie('utilisateur',$_SESSION["nomUser"]."/".$_SESSION["prenomUser"]."/".$_SESSION["emailUser"],time()+360,null,null,false,true);}
+// }
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Que C'est toi qui choisi l'histoire...</title>
+</head>
+<body> 
+    <?php
+    if(!isset($_POST["emailUser"])){
+        include_once 'form.php';
+    }else{
+        echo "<div>Ouaich, " . $_SESSION['emailUser'] . "</div>";
+        //Recherche
+
+        require_once("fonctions.php");
+        $pseudo = selectUser($_SESSION['mdpUser'],$_SESSION['emailUser']);
+
+        if($pseudo==null){
+            $txtpseudo="Utilisateur inconnu dans la base de données...";
+            session_unset();
+            // session_destroy();
+            session_write_close();
+            setcookie(session_name(), '', 0, '/');
+            $_SESSION['nomUser']=null;
+            ?>
+            <form action="forminscription.php" method="POST">
+            <input type="submit" value="Je veux créer un compte">
+        </form>
+        <?php
+        }else{
+            $txtpseudo="Utilisateur reconnu: " . $pseudo;
+        }
+
+        echo $txtpseudo;
+    }
+    ?>
+    <br>
+    <div><form action="deconnexion.php" method="POST"><input type="submit" value="Déconnexion"></form></div>
+
+
+</body>
+</html>
