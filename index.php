@@ -22,12 +22,21 @@ $_SESSION["emailUser"]=$_POST["emailUser"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="img/png" href="img/favicon.jpg">
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Que C'est toi qui choisi l'histoire...</title>
 </head>
-<body> 
+<body>
+
     <?php
+if (isset($_SESSION)){
+    ?>
+<a href="compte.php">Mon Compte</a>
+<a href="histoire.php">Page des histoires</a><br>
+    <?php
+}
+
     if(!isset($_POST["emailUser"])){
         include_once 'form.php';
     }else{
@@ -51,6 +60,8 @@ $_SESSION["emailUser"]=$_POST["emailUser"];
         <?php
         }else{
             $txtpseudo="Utilisateur reconnu: " . $pseudo;
+            header('refresh:3;url=histoire.php');
+            echo "Vous allez être redirigé vers la page des histoires, dans un instant!";
         }
 
         echo $txtpseudo;

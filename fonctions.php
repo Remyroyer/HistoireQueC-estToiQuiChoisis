@@ -77,8 +77,239 @@ $insert_statement = $connexion->prepare($insert_query);
 $connexion=deconnexion();
 }
 
+function selectStory()
+{
+    $connexion=connexion();
+    try{
+$insert_query = "SELECT * FROM histoire";
+                
+$insert_statement = $connexion->prepare($insert_query);
+
+$insert_statement->execute();
+$result = $insert_statement->fetchAll();
 
 
+if($result!=false){
+    return $result;
+}
+
+$insert_statement = null;
+
+
+    } catch(Exception $e){
+        //Gestion d'erreur
+        // die();
+    } 
+    
+$connexion=deconnexion();
+}
+
+function selecteventhistoire($idhistoire){
+    $connexion=connexion();
+
+    $insert_query = "SELECT Id_evenement FROM eventhistoire WHERE id_histoire=:id_histoire;";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':id_histoire', $idhistoire);
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll();
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+}
+
+function selectEvent($idEvent){
+    $connexion=connexion();
+
+    $insert_query = "SELECT * FROM evenement WHERE Id_evenement=:Id_evenement;";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':Id_evenement', $idEvent);
+           
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll();
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+}
+
+function selectLieu($idlieu){
+    $connexion=connexion();
+
+    $insert_query = "SELECT * FROM lieu WHERE Id_lieu=:Id_lieu;";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':Id_lieu', $idlieu);
+           
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll();
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+
+}
+
+function selectaction($idEvenement){
+    $connexion=connexion();
+
+    $insert_query = "SELECT * FROM actionevent WHERE Id_evenement=:Id_evenement;";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':Id_evenement', $idEvenement);
+           
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll();
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+}
+
+function selectActions($idaction){
+    $connexion=connexion();
+
+    $insert_query = "SELECT nomAction FROM actions WHERE Id_actions=:Id_actions;";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':Id_actions', $idaction);
+           
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll();
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+}
+
+    function selectCompte($mdpUser, $emailUser){
+        $connexion=connexion();
+    
+    $insert_query = "SELECT * FROM utilisateur WHERE mdpUser=:mdpUser AND emailUser=:emailUser;";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':mdpUser', $mdpUser);
+            $insert_statement->bindParam(':emailUser', $emailUser);
+           
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll(PDO::FETCH_ASSOC);
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+    }
+
+function updateUser(){
+    $connexion=connexion();
+    
+    $id=$_POST['id'];
+    $prenom=$_POST['prenom'];
+    $mdp=$_POST['mdp'];
+    $pseudo=$_POST['pseudo'];
+    $mail=$_POST['mail'];
+
+if(!isset($_POST['actif'])){
+    $actif=0;
+}else{
+    $actif=1;
+}
+
+    $insert_query = "UPDATE utilisateur SET prenomUser=:prenomUser, mdpUser=:mdpUser, actifUser=:actifUser, pseudoUser=:pseudoUser, emailUser=:emailUser WHERE Id_utilisateur=:Id_utilisateur;";
+            $insert_statement = $connexion->prepare($insert_query);
+
+            $insert_statement->bindParam(':prenomUser', $prenom);
+            $insert_statement->bindParam(':mdpUser', $mdp);
+            $insert_statement->bindParam(':actifUser', $actif);
+            $insert_statement->bindParam(':pseudoUser', $pseudo);
+            $insert_statement->bindParam(':emailUser', $mail);
+            $insert_statement->bindParam(':Id_utilisateur', $id);
+
+            $insert_statement->execute();
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+    
+    
+    
+}
+
+function selectPerso($idUser){
+    $connexion=connexion();
+
+    $insert_query = "SELECT * FROM perso WHERE Id_utilisateur=:Id_utilisateur";
+            $insert_statement = $connexion->prepare($insert_query);
+    
+            $insert_statement->bindParam(':Id_utilisateur', $idUser);
+           
+            $insert_statement->execute();
+           
+            $result = $insert_statement->fetchAll(PDO::FETCH_ASSOC);
+    
+            if($result!=false){
+                return $result;
+            }
+    
+            $insert_statement = null;
+    
+    $connexion=deconnexion();
+}
+    
+function insertPerso($nomPerso,$sexePerso,$idUtilisateur){
+    $connexion=connexion();
+    try{
+$insert_query = "INSERT INTO perso (nomPerso, sexePerso, Id_utilisateur) 
+VALUES (:nomPerso, :sexePerso, :Id_utilisateur);";
+                
+$insert_statement = $connexion->prepare($insert_query);
+
+        $insert_statement->bindParam(':nomPerso', $nomPerso);
+        $insert_statement->bindParam(':sexePerso', $sexePerso);
+        $insert_statement->bindParam(':Id_utilisateur', $idUtilisateur);
+        $insert_statement->execute();
+        $insert_statement = null;
+
+    } catch(Exception $e){
+        //Gestion d'erreur
+        // die();
+    } 
+    
+$connexion=deconnexion();
+
+
+}
 
 
 ?>

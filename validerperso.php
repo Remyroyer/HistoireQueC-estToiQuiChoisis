@@ -1,18 +1,19 @@
 <?php
-session_unset();
-// session_destroy();
-session_write_close();
-setcookie(session_name(), '', 0, '/');
-$_SESSION['nomUser']=null;
+//echo $_COOKIE['idUtilisateur'];
 
-session_unset();
-session_write_close();
+setcookie('nomPerso',$_POST['nomPerso'], time()+3600*24, '/', '', false, false);
+//echo "NOM: ".$_COOKIE['nomPerso'];
+//echo "NOM: " .$_POST['nomPerso'];
 
-header('refresh:3;url=index.php');
-echo "Vous allez être redirigé vers l'accueil dans un instant!";
+require_once("fonctions.php");
+insertPerso($_POST['nomPerso'],$_POST['sexePerso'],$_COOKIE['idUtilisateur']);
+
+// header
+header('refresh:3;url=perso.php');
+echo "Mise à jour effectuée, vous allez être redirigé vers la page 'Perso' dans un instant!";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
