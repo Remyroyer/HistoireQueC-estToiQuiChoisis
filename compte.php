@@ -33,16 +33,16 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
         <img src="<?php echo $result[0]['imgUser']; ?>" class="card-img-top" alt="Avatar du joueur" height=200>
         <div class="card-body">
             <h5 class="card-title">Nom: <input type="text" name="nom" size="20"
-                                               value="<?php echo $result[0]['nomUser']; ?>"></h5>
-            <p class="card-text">Id: <input type="text" name="id" size="2"
-                                            value="<?php echo $result[0]['Id_utilisateur']; ?>"></p>
+                                               value="<?php echo $result[0]['nomUser']; ?>"required disabled="disabled"></h5>
+            <p class="card-text"><input type="text" name="id" size="2"
+                                            value="<?php echo $result[0]['Id_utilisateur']; ?>"hidden disabled="disabled"></p>
             <p class="card-text">Prénom: <input type="text" name="prenom" size="18"
-                                                value="<?php echo $result[0]['prenomUser']; ?>"></p>
+                                                value="<?php echo $result[0]['prenomUser']; ?>"required></p>
             <p class="card-text">Mot de passe: <input type="password" name="mdp" size="24"
-                                                      value="<?php echo $result[0]['mdpUser']; ?>"></p>
+                                                      value="<?php echo $result[0]['mdpUser']; ?>"required></p>
             <p class="card-text">Mot de passe: <input type="password" name="mdp0" size="24"></p>
             <p class="card-text">Date de création: <input type="text" name="date" size="7"
-                                                          value="<?php echo $result[0]['dateCreationUser']; ?>"></p>
+                                                          value="<?php echo $result[0]['dateCreationUser']; ?>"disabled="disabled"></p>
             <?php
             // echo $result[0]['actifUser'];
             if ($result[0]['actifUser'] != 1) {
@@ -56,11 +56,11 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
             }
             ?>
             <p class="card-text">Pseudo: <input type="text" name="pseudo" size="24"
-                                                value="<?php echo $result[0]['pseudoUser']; ?>"></p>
+                                                value="<?php echo $result[0]['pseudoUser']; ?>"required></p>
             <p class="card-text">E-mail: <input type="email" name="mail" size="28"
-                                                value="<?php echo $result[0]['emailUser']; ?>"></p>
-            <p class="card-text">Admin: <input type="text" name="admin" size="1"
-                                               value="<?php echo $result[0]['admin']; ?>"></p>
+                                                value="<?php echo $result[0]['emailUser']; ?>"required></p>
+            <p class="card-text"><input type="text" name="admin" size="1"
+                                               value="<?php echo $result[0]['admin']; ?>"hidden></p>
 
             <input type="submit" class="btn btn-primary">
 </form>
