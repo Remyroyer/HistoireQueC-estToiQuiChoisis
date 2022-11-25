@@ -41,11 +41,11 @@ if ($_POST['mdp0'] === $_POST['mdp'] || $_POST['mdp0'] == null) {
     // var_dump($_POST['idUser']);
     updateUser($_POST['idUser'], $_POST['prenom'], $_POST['mdp'], $_POST['pseudo'], $_POST['mail'], $actif);
     //Redirection
-    //header('refresh:3;url=compte.php');
+    header('refresh:3;url=compte.php');
     echo "Mise à jour effectuée, vous allez être redirigé vers la page 'Mon compte' dans un instant!";
 } else {
     //Si le mot de passe est incorrectement modifié, on redirige sans mise à jour
-    //header('refresh:3;url=compte.php');
+    header('refresh:3;url=compte.php');
     echo "Erreur dans la saisie du mot de passe, vous allez être redirigé vers la page 'Mon compte' dans un instant!";
 }
 
