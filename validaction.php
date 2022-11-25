@@ -1,21 +1,31 @@
 <?php
-if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-if(!isset($_SESSION['nomUser'])){header('Location: index.php');}
+//Ouverture SESSION
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
-var_dump ($_POST['eventval']);
-setcookie('idHistoire', $_POST['idhistoire'], time()+3600*24, '/', '', false, false);
+//Vérification compte utilisateur sinon redirection
+if (!isset($_SESSION['nomUser'])) {
+    header('Location: index.php');
+}
 
-var_dump($_COOKIE['idHistoire']);
+//var_dump ($_POST['eventval']);
+setcookie('idHistoire', $_POST['idhistoire'], time() + 3600 * 24, '/', '', false, false);
 
-if ($_POST["actionval"]==="1"){
+//var_dump($_COOKIE['idHistoire']);
+
+//Vérification du bon choix de l'action
+if ($_POST["actionval"] === "1") {
     echo "Choix valide!<br>";
-    setcookie('idEvent', intval($_POST["eventval"])+1);
-    setcookie('nbcoups', $_COOKIE['nbcoups']-1);
+    //On passe à l'event suivant
+    setcookie('idEvent', intval($_POST["eventval"]) + 1);
+    //Le joueur gagne un coup supplémentaire
+    setcookie('nbcoups', $_COOKIE['nbcoups'] - 1);
     header('Location: gameplay.php');
-}else{
+} else {
     echo "Choix non valide!<br>";
+    //On reste sur l'event en cours
     setcookie('idEvent', intval($_POST["eventval"]));
-    setcookie('nbcoups', intval($_COOKIE['nbcoups'])+1);
+    //Le joueur perd un coup
+    setcookie('nbcoups', intval($_COOKIE['nbcoups']) + 1);
     header('Location: gameplay.php');
 }
 
