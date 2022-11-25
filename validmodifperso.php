@@ -4,7 +4,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 //Vérification compte utilisateur sinon redirection
 if (!isset($_SESSION['nomUser'])) {
-    header('Location: index.php');
+    header('refresh:3;url=index.php');
+    echo "Vous allez être redirigé vers l'accueil dans un instant!";
 }
 
 ?>
