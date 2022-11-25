@@ -60,7 +60,7 @@ VALUES (:nomUser, :prenomUser, :mdpUser, :dateCreationUser, :actifUser, :pseudoU
         $actifUser = 1;
         // $pseudoUser=$_POST['pseudoUser'];
         // $emailUser=$_POST['emailUser'];
-        $admin = 1;
+        $admin = 0;
 
         $insert_statement = $connexion->prepare($insert_query);
 
