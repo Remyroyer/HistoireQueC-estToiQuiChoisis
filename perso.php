@@ -22,7 +22,7 @@ if (!isset($_SESSION['nomUser'])) {
 <body>
 <a href="index.php">Retour à l'accueil</a><br>
 <a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Compte</a><br>
+<a href="compte.php">Mon Perso</a><br>
 
 <?php
 //Requete SQL pour connaitre Id utilisateur
@@ -42,6 +42,8 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
         <th scope="col">Nom du perso</th>
         <th scope="col">Sexe du perso</th>
         <th scope="col">Choisir ce perso</th>
+        <th scope="col">Modifier ce perso</th>
+        <th scope="col">Supprimer ce perso</th>
     </tr>
     </thead>
     <tbody>
@@ -59,7 +61,18 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
                 <td><input name="sexePerso" value="<?php echo $resultat[$a]['sexePerso']; ?>"
                            hidden><?php echo $resultat[$a]['sexePerso']; ?></td>
                 <td><input type="submit"></td>
-            </form>
+                </form>
+                <!--Modification du perso -->
+                <form action="modifperso.php" method="POST">
+                <td><input name="idPerso" value="<?php echo $resultat[$a]['Id_perso']; ?>"
+                           hidden><input type="submit"></td>
+                </form>
+
+                <!--Mise en cache du perso -->
+                <form action="cacheperso.php" method="POST">
+                <td><input name="idPerso" value="<?php echo $resultat[$a]['Id_perso']; ?>"
+                           hidden><input type="submit"></td>
+                </form>
         </tr>
         <?php
         $a++;
@@ -72,6 +85,8 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
             <td><input name="nomPerso" value="Nouveau perso"></td>
             <td><input name="sexePerso" value="Femelle"></td>
             <td><input type="submit"></td>
+            <td></td>
+            <td></td>
         </form>
     </tr>
     </tbody>
@@ -86,6 +101,8 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
             <td><input name="nomPerso" value="Nouveau perso"></td>
             <td><input name="sexePerso" value="Femelle"></td>
             <td><input type="submit"></td>
+            <td></td>
+            <td></td>
         </form>
     </tr>
     </tbody>

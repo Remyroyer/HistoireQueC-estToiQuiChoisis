@@ -34,8 +34,8 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
         <div class="card-body">
             <h5 class="card-title">Nom: <input type="text" name="nom" size="20"
                                                value="<?php echo $result[0]['nomUser']; ?>"required disabled="disabled"></h5>
-            <p class="card-text"><input type="text" name="id" size="2"
-                                            value="<?php echo $result[0]['Id_utilisateur']; ?>"hidden disabled="disabled"></p>
+            <p class="card-text"><input type="text" name="idUser" size="2"
+                                            value="<?php echo $result[0]['Id_utilisateur']; ?>"hidden></p>
             <p class="card-text">Prénom: <input type="text" name="prenom" size="18"
                                                 value="<?php echo $result[0]['prenomUser']; ?>"required></p>
             <p class="card-text">Mot de passe: <input type="password" name="mdp" size="24"

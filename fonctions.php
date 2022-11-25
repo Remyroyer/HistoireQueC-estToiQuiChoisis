@@ -252,24 +252,17 @@ function selectCompte($mdpUser, $emailUser)
 }
 
 //Mise à jour du compte utilisateur
-function updateUser()
+function updateUser($id,$prenom,$mdp,$pseudo,$mail,$actif)
 {
     $connexion = connexion();
 
-    $id = $_POST['id'];
-    $prenom = $_POST['prenom'];
-    $mdp = $_POST['mdp'];
-    $pseudo = $_POST['pseudo'];
-    $mail = $_POST['mail'];
-
-    if (!isset($_POST['actif'])) {
-        $actif = 0;
-    } else {
-        $actif = 1;
-    }
     $insert_query = "UPDATE utilisateur SET prenomUser=:prenomUser, mdpUser=:mdpUser, actifUser=:actifUser, pseudoUser=:pseudoUser, emailUser=:emailUser WHERE Id_utilisateur=:Id_utilisateur;";
     $insert_statement = $connexion->prepare($insert_query);
 
+
+
+
+    
     $insert_statement->bindParam(':prenomUser', $prenom);
     $insert_statement->bindParam(':mdpUser', $mdp);
     $insert_statement->bindParam(':actifUser', $actif);
@@ -288,10 +281,13 @@ function selectPerso($idUser)
 {
     $connexion = connexion();
 
-    $insert_query = "SELECT * FROM perso WHERE Id_utilisateur=:Id_utilisateur";
+    $insert_query = "SELECT * FROM perso WHERE Id_utilisateur=:Id_utilisateur AND actifPerso=:actifPerso";
     $insert_statement = $connexion->prepare($insert_query);
 
+    $actifPerso=1;
+
     $insert_statement->bindParam(':Id_utilisateur', $idUser);
+    $insert_statement->bindParam(':actifPerso', $actifPerso);
 
     $insert_statement->execute();
 
@@ -328,6 +324,67 @@ VALUES (:nomPerso, :sexePerso, :Id_utilisateur);";
     }
     $connexion = deconnexion();
 }
+
+//Désactiver un perso
+function desactiveperso($idperso){
+    $connexion = connexion();
+
+    $insert_query = "UPDATE perso SET actifPerso=:actifPerso WHERE Id_perso=:Id_perso;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $actifPerso= 0;
+
+    $insert_statement->bindParam(':Id_perso', $idperso);
+    $insert_statement->bindParam(':actifPerso', $actifPerso);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+
+}
+
+//Afficher le perso selectionné
+function selectOnePerso($idPerso){
+    $connexion = connexion();
+
+    $insert_query = "SELECT * FROM perso WHERE Id_perso=:Id_perso";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':Id_perso', $idPerso);
+
+    $insert_statement->execute();
+
+    $result = $insert_statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result != false) {
+        return $result;
+    }
+
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+}
+
+function updateperso($idPerso,$nomPerso,$sexePerso){
+    $connexion = connexion();
+
+    $insert_query = "UPDATE perso SET nomPerso=:nomPerso, sexePerso=:sexePerso WHERE Id_perso=:Id_perso;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $sexe=substr($sexePerso, 0, 15);
+    
+    $insert_statement->bindParam(':Id_perso', $idPerso);
+    $insert_statement->bindParam(':nomPerso', $nomPerso);
+    $insert_statement->bindParam(':sexePerso', $sexe);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+}
+
+
 
 
 ?>

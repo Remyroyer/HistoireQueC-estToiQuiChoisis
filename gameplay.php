@@ -32,7 +32,7 @@ if (isset($_POST['nomPerso'])) {
     } else {
         //setcookie('nomPerso',$_COOKIE['nomPerso']);
         //echo "COOKIES périmés";
-        header('Location: perso.php');
+        //header('Location: perso.php');
     }
 }
 // echo "<br>". "IDHISTOIRE: " . $_COOKIE['idHistoire'] ."<br>";
