@@ -27,43 +27,44 @@ if (!isset($_SESSION['nomUser'])) {
 //Affichage des infos utilisateur
 require_once("fonctions.php");
 $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
-?>
-<form action="modifcompte.php" method="POST">
-    <div class="card" style="width: 20rem;">
-        <img src="<?php echo $result[0]['imgUser']; ?>" class="card-img-top" alt="Avatar du joueur" height=200>
-        <div class="card-body">
-            <h5 class="card-title">Nom: <input type="text" name="nom" size="20"
-                                               value="<?php echo $result[0]['nomUser']; ?>"required disabled="disabled"></h5>
-            <p class="card-text"><input type="text" name="idUser" size="2"
-                                            value="<?php echo $result[0]['Id_utilisateur']; ?>"hidden></p>
-            <p class="card-text">Prénom: <input type="text" name="prenom" size="18"
-                                                value="<?php echo $result[0]['prenomUser']; ?>"required></p>
-            <p class="card-text">Mot de passe: <input type="password" name="mdp" size="24"
-                                                      value="<?php echo $result[0]['mdpUser']; ?>"required></p>
-            <p class="card-text">Mot de passe: <input type="password" name="mdp0" size="24"></p>
-            <p class="card-text">Date de création: <input type="text" name="date" size="7"
-                                                          value="<?php echo $result[0]['dateCreationUser']; ?>"disabled="disabled"></p>
-            <?php
-            // echo $result[0]['actifUser'];
-            if ($result[0]['actifUser'] != 1) {
-                ?>
-                <p class="card-text">Actif: <input type="checkbox" name="actif"></p>
+    ?>
+    <form action="modifcompte.php" method="POST">
+        <div class="card" style="width: 20rem;">
+    
+            <img src="<?php echo $result[0]['imgUser']; ?>" class="card-img-top" alt="Avatar du joueur" height=200>
+            <div class="card-body">
+                <h5 class="card-title">Nom : <input type="text" name="nom" size="20"
+                                                   value="<?php echo $result[0]['nomUser']; ?>"required disabled="disabled"></h5>
+                <p class="card-text"><input type="text" name="idUser" size="2"
+                                                value="<?php echo $result[0]['Id_utilisateur']; ?>"hidden></p>
+                <p class="card-text">Prénom : <input type="text" name="prenom" size="18"
+                                                    value="<?php echo $result[0]['prenomUser']; ?>"required></p>
+                <p class="card-text">Mot de passe Actuel : <input type="password" name="mdp" size="24" required></p>                               
+                <p class="card-text">Nouveau mot de passe : <input type="password" name="mdp1" size="24" ></p>
+                <p class="card-text">Confirmation : <input type="password" name="mdp2" size="24" ></p>
+                <p class="card-text">Date de création : <input type="text" name="date" size="7"
+                                                              value="<?php echo $result[0]['dateCreationUser']; ?>"disabled="disabled"></p>
                 <?php
-            } else {
+                // echo $result[0]['actifUser'];
+                if ($result[0]['actifUser'] != 1) {
+                    ?>
+                    <p class="card-text">Actif: <input type="checkbox" name="actif"></p>
+                    <?php
+                } else {
+                    ?>
+                    <p class="card-text">Actif: <input type="checkbox" name="actif" checked='on'></p>
+                    <?php
+                }
                 ?>
-                <p class="card-text">Actif: <input type="checkbox" name="actif" checked='on'></p>
-                <?php
-            }
-            ?>
-            <p class="card-text">Pseudo: <input type="text" name="pseudo" size="24"
-                                                value="<?php echo $result[0]['pseudoUser']; ?>"required></p>
-            <p class="card-text">E-mail: <input type="email" name="mail" size="28"
-                                                value="<?php echo $result[0]['emailUser']; ?>"required></p>
-            <p class="card-text"><input type="text" name="admin" size="1"
-                                               value="<?php echo $result[0]['admin']; ?>"hidden></p>
-
-            <input type="submit" class="btn btn-primary">
-</form>
+                <p class="card-text">Pseudo: <input type="text" name="pseudo" size="24"
+                                                    value="<?php echo $result[0]['pseudoUser']; ?>"required></p>
+                <p class="card-text">E-mail: <input type="email" name="mail" size="28"
+                                                    value="<?php echo $result[0]['emailUser']; ?>"required></p>
+                <p class="card-text"><input type="text" name="admin" size="1"
+                                                   value="<?php echo $result[0]['admin']; ?>"hidden></p>
+    
+                <input type="submit" class="btn btn-primary">
+    </form>
 </div>
 </div>
 

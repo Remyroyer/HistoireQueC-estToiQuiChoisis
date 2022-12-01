@@ -61,6 +61,8 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
                 <td><input name="sexePerso" value="<?php echo $resultat[$a]['sexePerso']; ?>"
                            hidden><?php echo $resultat[$a]['sexePerso']; ?></td>
                 <td><input type="submit"></td>
+                <input type="text" name="debuthistoire"
+                                                value="true" hidden></td>
                 </form>
                 <!--Modification du perso -->
                 <form action="modifperso.php" method="POST">

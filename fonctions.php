@@ -24,6 +24,9 @@ function deconnexion()
 //Affichage du pseudo du joueur uniquement (trop restrictive!)
 function selectUser($mdpUser, $emailUser)
 {
+
+    $mdpUser = md5($mdpUser);
+
     $connexion = connexion();
 
     $insert_query = "SELECT pseudoUser FROM utilisateur WHERE mdpUser=:mdpUser AND emailUser=:emailUser;";
@@ -49,6 +52,7 @@ function selectUser($mdpUser, $emailUser)
 function addUser($nomUser, $prenomUser, $mdpUser, $pseudoUser, $emailUser)
 {
     $connexion = connexion();
+    $mdpUser = md5($mdpUser);
     // echo $nomUser . " " . $prenomUser . " " .  $mdpUser . " " .  $pseudoUser . " " . $emailUser;
     try {
         $insert_query = "INSERT INTO utilisateur (nomUser, prenomUser, mdpUser, dateCreationUser, actifUser, pseudoUser, emailUser, admin) 
@@ -247,6 +251,7 @@ function selectActions($idaction)
 function selectCompte($mdpUser, $emailUser)
 {
     $connexion = connexion();
+    $mdpUser = md5($mdpUser);
 
     $insert_query = "SELECT * FROM utilisateur WHERE mdpUser=:mdpUser AND emailUser=:emailUser;";
     $insert_statement = $connexion->prepare($insert_query);
@@ -268,9 +273,10 @@ function selectCompte($mdpUser, $emailUser)
 }
 
 //Mise à jour du compte utilisateur
-function updateUser($id,$prenom,$mdp,$pseudo,$mail,$actif)
+function updateUser($id,$prenom,$mdpUser,$pseudo,$mail,$actif)
 {
     $connexion = connexion();
+    $mdpUser = md5($mdpUser);
 
     $insert_query = "UPDATE utilisateur SET prenomUser=:prenomUser, mdpUser=:mdpUser, actifUser=:actifUser, pseudoUser=:pseudoUser, emailUser=:emailUser WHERE Id_utilisateur=:Id_utilisateur;";
     $insert_statement = $connexion->prepare($insert_query);
@@ -280,7 +286,7 @@ function updateUser($id,$prenom,$mdp,$pseudo,$mail,$actif)
 
     
     $insert_statement->bindParam(':prenomUser', $prenom);
-    $insert_statement->bindParam(':mdpUser', $mdp);
+    $insert_statement->bindParam(':mdpUser', $mdpUser);
     $insert_statement->bindParam(':actifUser', $actif);
     $insert_statement->bindParam(':pseudoUser', $pseudo);
     $insert_statement->bindParam(':emailUser', $mail);
@@ -399,7 +405,6 @@ function updateperso($idPerso,$nomPerso,$sexePerso){
 
     $connexion = deconnexion();
 }
-
 
 
 

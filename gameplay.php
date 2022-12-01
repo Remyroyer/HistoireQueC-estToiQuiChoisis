@@ -35,6 +35,13 @@ if (!isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
     }
 }
 
+//Affichage de la page Ecran début histoire parce que c'est dans les specs!
+         if((isset($_POST['debuthistoire']))&&((isset($_COOKIE['nomPerso']))||(isset($_POST['nomPerso'])))){
+            //Go to page ECRAN DEBUT HISTOIRE
+            header('Location: debutstory.php');
+         }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -132,6 +139,7 @@ if (isset($_POST['nomPerso'])) {
                         <input type="text" name="idhistoire" value="<?php echo $idhistoire; ?>" hidden>
                         <input type="text" name="eventval" value="<?php echo $idEvenement; ?>" hidden>
                         <input type="text" name="actionval" value="<?php echo $actionok; ?>" hidden>
+                        <input type="text" name="debuthistoire" value="false" hidden>
                         <?php
                         ?>
                         <button type="submit">
@@ -147,6 +155,8 @@ if (isset($_POST['nomPerso'])) {
             } else {
 
                 echo "<br>" . "Fin de l'histoire...";
+
+                header('refresh:3;url=gagne.php');
 
                 //header('Location: gagne.php');
                 //Bouton de redirection...
