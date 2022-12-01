@@ -7,36 +7,34 @@ if (!isset($_SESSION['nomUser'])) {
     header('Location: index.php');
 }
 
-//Création cookies si n'exite pas, sinon utilise ou redirige
-if (isset($_POST['id_histoire'])) {
-    $idhistoire = $_POST['id_histoire'];
-    setcookie('idhistoire', $idhistoire, time() + 3600 * 24, '/', '', false, false);
-    setcookie('idEvent', 1, time() + 3600 * 24, '/', '', false, false);
-    setcookie('nbcoups', 0, time() + 3600 * 24, '/', '', false, false);
-} else {
-    if (isset($_COOKIE['idHistoire'])) {
-        $idhistoire = $_COOKIE['idhistoire'];
-    } else {
-        header('Location: histoire.php');
+//Vérification nom perso sinon redirection ou création du cookie
+if (!isset($_COOKIE['nomPerso']) && !isset($_POST['nomPerso'])) {
+    header('Location: perso.php');
+}else{
+    if (!isset($_COOKIE['nomPerso']) && isset($_POST['nomPerso'])){
+        setcookie('nomPerso',$_POST['nomPerso'], time() + 3600 * 24, '/', '', false, false);
     }
 }
 
-//Si le nom du perso est défini, sinon appel cookie ou redirection...
-if (isset($_POST['nomPerso'])) {
-    $rest = $_POST['nomPerso'];
-    setcookie('nomPerso', $rest);
-} else {
-    if (!isset($_COOKIE['nomPerso'])) {
-        echo "Il n'y a pas le nom du perso...";
-        header('Location: perso.php');
-    } else {
-        //setcookie('nomPerso',$_COOKIE['nomPerso']);
-        //echo "COOKIES périmés";
-        //header('Location: perso.php');
+//Vérification histoire sinon redirection ou création du cookie
+if (isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
+    $idhistoire=$_COOKIE['idhistoire'];
+}
+if (isset($_COOKIE['idhistoire']) && isset($_POST['id_histoire'])) {
+    $idhistoire=$_POST['id_histoire'];
+    setcookie('idhistoire',$_POST['id_histoire']);
+}
+if (!isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
+    header('Location: histoire.php');
+}else{
+    if (!isset($_COOKIE['idhistoire']) && isset($_POST['id_histoire'])){
+        setcookie('idhistoire',$_POST['id_histoire'], time() + 3600 * 24, '/', '', false, false);
+        setcookie('idEvent', 1, time() + 3600 * 24, '/', '', false, false);
+        // setcookie('nbcoups', 0, time() + 3600 * 24, '/', '', false, false);
+        $idhistoire=$_POST['id_histoire'];
     }
 }
-// echo "<br>". "IDHISTOIRE: " . $_COOKIE['idHistoire'] ."<br>";
-//echo "<br>". "NOM PERSO: " . $_POST['nomPerso'] . "<->" . $rest . "<==>" . $_COOKIE['nomPerso'] ."<br>";
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -54,6 +52,7 @@ if (isset($_POST['nomPerso'])) {
 <a href="histoire.php">Page des histoires</a><br>
 <a href="compte.php">Mon Compte</a>
 <a href="perso.php">Changer/Créer Perso</a>
+<br>
 <?php
 //Affichage de l'histoire
 echo "Vous avez choisi l'histoire: " . $idhistoire;

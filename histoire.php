@@ -6,9 +6,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 if (!isset($_SESSION['nomUser'])) {
     header('Location: index.php');
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

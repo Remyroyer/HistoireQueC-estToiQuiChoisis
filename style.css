@@ -1,0 +1,89 @@
+  .fond {
+    background-image: url("img/equipiers.png");
+  }
+
+  .rotate {
+    background-color: transparent;
+    transform: rotate(15deg) translateX(-40px) translateY(45px);
+    height:225px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 4px 4px 0px 0px;
+  }
+  
+  .rotate2, .rotate22 {
+    background-color: transparent;
+    transform: rotate(-15deg) translateY(50px) translateX(-15px);
+  }
+
+  .rotate22, .space2 {
+  border: 1px dashed #898686;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  }
+
+  .space,.space1,.space2 {
+    transform: translateX(45px);
+  }
+
+  .space1 {
+color: white;
+  }
+
+  .rotatecompte {
+    transform: rotate(-15deg);
+    color: #FFC107;
+  }
+
+  .storyway {
+color:red;
+  }
+
+  .connexion {
+    text-align: right;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .logo {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .topho{
+    background: rgba(0, 0, 0, 0.84);
+border: 1px dashed #898686;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 2px;
+  }
+
+  .medaille{
+    box-sizing: border-box;
+
+width: 302px;
+height: 302px;
+left: 0px;
+top: 0px;
+
+background: #FFC107;
+border: 1px solid #000000;
+box-shadow: 10px 8px 2px rgba(0, 0, 0, 0.25);
+  }
+
+
+
+.pseudoz {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.save{
+width: 100px;
+height: 60px;
+left: 0px;
+top: 7.77px;
+  background: #D9D9D9;
+border: 1px dashed #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 2px;
+transform: rotate(-4.46deg);
+}

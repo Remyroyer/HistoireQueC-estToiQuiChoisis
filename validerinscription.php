@@ -69,9 +69,9 @@ if (!isset($_POST["nomUser"])) {
             //Gestion d'erreur
             $txtpseudo = "Cette adresse mail existe déjà!";
             echo $txtpseudo;
-            //En cas d'erreur, on redirige vers cette même page?........................................
+            //En cas d'erreur, on redirige vers cette page........................................
             echo "Vous allez être redirigé vers l'accueil dans un instant!";
-            header('refresh:3;url=validerinscription.php');
+            header('refresh:3;url=forminscription.php');
             die();
         }
     } else {

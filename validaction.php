@@ -8,7 +8,7 @@ if (!isset($_SESSION['nomUser'])) {
 }
 
 //var_dump ($_POST['eventval']);
-setcookie('idHistoire', $_POST['idhistoire'], time() + 3600 * 24, '/', '', false, false);
+// setcookie('idHistoire', $_POST['idhistoire'], time() + 3600 * 24, '/', '', false, false);
 
 //var_dump($_COOKIE['idHistoire']);
 
@@ -19,7 +19,11 @@ if ($_POST["actionval"] === "1") {
     setcookie('idEvent', intval($_POST["eventval"]) + 1);
     //Le joueur gagne un coup supplémentaire
     setcookie('nbcoups', $_COOKIE['nbcoups'] - 1);
+    if($_COOKIE['nbcoups']<=0){
+        setcookie('nbcoups', 0);
+    }
     header('Location: gameplay.php');
+
 } else {
     echo "Choix non valide!<br>";
     //On reste sur l'event en cours
@@ -27,6 +31,7 @@ if ($_POST["actionval"] === "1") {
     //Le joueur perd un coup
     setcookie('nbcoups', intval($_COOKIE['nbcoups']) + 1);
     header('Location: gameplay.php');
+
 }
 
 

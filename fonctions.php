@@ -64,6 +64,20 @@ VALUES (:nomUser, :prenomUser, :mdpUser, :dateCreationUser, :actifUser, :pseudoU
 
         $insert_statement = $connexion->prepare($insert_query);
 
+//Restreindre les infos suivant les paramêtres de la BDD
+        //nomUser->varchar(50)
+        // $nomUser=
+        //prenomUser->varchar(50)
+        // $prenomUser=
+        //mdpUser->varchar(200)
+        // $mdpUser=
+        //dateCreationUser, actifUser, admin
+        //AUTOMATIQUES
+        //pseudoUser->varchar(50)
+        // $pseudoUser=
+        //emailUser->varchar(100)
+        // $emailUser=
+
         $insert_statement->bindParam(':nomUser', $nomUser);
         $insert_statement->bindParam(':prenomUser', $prenomUser);
         $insert_statement->bindParam(':mdpUser', $mdpUser);
@@ -79,6 +93,8 @@ VALUES (:nomUser, :prenomUser, :mdpUser, :dateCreationUser, :actifUser, :pseudoU
     } catch (Exception $e) {
         //Gestion d'erreur
         // die();
+        header('Location: forminscription.php');
+        //Erreur dans la création du compte...
     }
 
     $connexion = deconnexion();

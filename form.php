@@ -34,16 +34,17 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
                 <input type="text" id="prenomUser" name="prenomUser">
             </div>
             <div>
+                <label for="emailUser">E-mail&nbsp;:</label>
+                <input type="email" id="emailUser" name="emailUser" required>
+            </div>
+            <br>
+            <div>
                 <label for="mdpUser">Mot de passe :</label>
                 <input type="password" id="mdpUser" name="mdpUser" required>
             </div>
             <div class="invisible">
                 <label for="pseudoUser">Pseudo :</label>
                 <input type="text" id="pseudoUser" name="pseudoUser">
-            </div>
-            <div>
-                <label for="emailUser">E-mail&nbsp;:</label>
-                <input type="email" id="emailUser" name="emailUser" required>
             </div>
             <br>
             <button type="submit" value="envoyer">Se connecter</button>
