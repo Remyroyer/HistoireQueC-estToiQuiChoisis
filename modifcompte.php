@@ -42,8 +42,10 @@ if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['
     // var_dump($_POST['idUser']);
     updateUser($_POST['idUser'], $_POST['prenom'], $_POST['mdp1'], $_POST['pseudo'], $_POST['mail'], $actif);
     //Redirection
-    header('refresh:3;url=index.php');
-    echo "Mise à jour effectuée, reconnectez vous SVP";
+    //header('refresh:3;url=index.php');
+    //ou vers
+    header('refresh:3;url=deconnexion.php');
+    echo "Mise à jour effectuée, merci de vous reconnecter";
 
 }elseif (isset($_POST['actif'])) 
 {
