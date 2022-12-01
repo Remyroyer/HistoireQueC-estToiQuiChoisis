@@ -76,6 +76,9 @@ if (!isset($_POST["nomUser"])) {
         }
     } else {
         $txtpseudo = "Cette adresse mail existe déjà!";
+        echo "Cette adresse mail existe déjà!!!";
+        echo "Vous allez être redirigé vers l'accueil dans un instant!";
+            header('refresh:3;url=index.php');
     }
 
     //echo $txtpseudo;
