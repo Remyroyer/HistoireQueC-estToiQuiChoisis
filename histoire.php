@@ -63,8 +63,8 @@ $result = selectStory();
                 <td><?php echo $result[$a]['genreHistoire']; ?></td>
                 <td><input type="submit"><input type="text" name="id_histoire"
                                                 value="<?php echo $result[$a]['Id_histoire']; ?>" hidden>
-                                                <input type="text" name="debuthistoire"
-                                                value="true" hidden></td>
+                    <input type="text" name="debuthistoire"
+                           value="true" hidden></td>
             </tr>
         </form>
         <?php

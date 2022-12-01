@@ -29,9 +29,7 @@ if (!isset($_SESSION['nomUser'])) {
 //Vérification si mot de passe modifié correctement ou pas modifié
 
 
-
-if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['mdp2']) 
-{
+if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['mdp2']) {
     if (isset($_POST['actif'])) {
         $actif = 1;
     } else {
@@ -47,8 +45,7 @@ if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['
     header('refresh:3;url=deconnexion.php');
     echo "Mise à jour effectuée, merci de vous reconnecter";
 
-}elseif (isset($_POST['actif'])) 
-{
+} elseif (isset($_POST['actif'])) {
     $actif = 1;
     require_once("fonctions.php");
     // var_dump($_POST['idUser']);
@@ -56,8 +53,7 @@ if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['
     //Redirection
     header('refresh:3;url=compte.php');
     echo "Mise à jour effectuée, vous allez être redirigé vers la page 'Mon compte' dans un instant!";
-} elseif (!isset($_POST['actif']))
-{
+} elseif (!isset($_POST['actif'])) {
     $actif = 0;
     require_once("fonctions.php");
     // var_dump($_POST['idUser']);
@@ -65,14 +61,11 @@ if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['
     //Redirection
     header('refresh:3;url=compte.php');
     echo "Mise à jour effectuée, vous allez être redirigé vers la page 'Mon compte' dans un instant!";
-}else {
+} else {
     //Si le mot de passe est incorrectement modifié, on redirige sans mise à jour
     header('refresh:3;url=compte.php');
     echo "Erreur dans la saisie du mot de passe, vous allez être redirigé vers la page 'Mon compte' dans un instant!";
 }
-
-
-
 
 
 ?>

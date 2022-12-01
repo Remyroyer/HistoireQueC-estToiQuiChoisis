@@ -10,36 +10,36 @@ if (!isset($_SESSION['nomUser'])) {
 //Vérification nom perso sinon redirection ou création du cookie
 if (!isset($_COOKIE['nomPerso']) && !isset($_POST['nomPerso'])) {
     header('Location: perso.php');
-}else{
-    if (!isset($_COOKIE['nomPerso']) && isset($_POST['nomPerso'])){
-        setcookie('nomPerso',$_POST['nomPerso'], time() + 3600 * 24, '/', '', false, false);
+} else {
+    if (!isset($_COOKIE['nomPerso']) && isset($_POST['nomPerso'])) {
+        setcookie('nomPerso', $_POST['nomPerso'], time() + 3600 * 24, '/', '', false, false);
     }
 }
 
 //Vérification histoire sinon redirection ou création du cookie
 if (isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
-    $idhistoire=$_COOKIE['idhistoire'];
+    $idhistoire = $_COOKIE['idhistoire'];
 }
 if (isset($_COOKIE['idhistoire']) && isset($_POST['id_histoire'])) {
-    $idhistoire=$_POST['id_histoire'];
-    setcookie('idhistoire',$_POST['id_histoire']);
+    $idhistoire = $_POST['id_histoire'];
+    setcookie('idhistoire', $_POST['id_histoire']);
 }
 if (!isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
     header('Location: histoire.php');
-}else{
-    if (!isset($_COOKIE['idhistoire']) && isset($_POST['id_histoire'])){
-        setcookie('idhistoire',$_POST['id_histoire'], time() + 3600 * 24, '/', '', false, false);
+} else {
+    if (!isset($_COOKIE['idhistoire']) && isset($_POST['id_histoire'])) {
+        setcookie('idhistoire', $_POST['id_histoire'], time() + 3600 * 24, '/', '', false, false);
         setcookie('idEvent', 1, time() + 3600 * 24, '/', '', false, false);
         // setcookie('nbcoups', 0, time() + 3600 * 24, '/', '', false, false);
-        $idhistoire=$_POST['id_histoire'];
+        $idhistoire = $_POST['id_histoire'];
     }
 }
 
 //Affichage de la page Ecran début histoire parce que c'est dans les specs!
-         if((isset($_POST['debuthistoire']))&&((isset($_COOKIE['nomPerso']))||(isset($_POST['nomPerso'])))){
-            //Go to page ECRAN DEBUT HISTOIRE
-            header('Location: debutstory.php');
-         }
+if ((isset($_POST['debuthistoire'])) && ((isset($_COOKIE['nomPerso'])) || (isset($_POST['nomPerso'])))) {
+    //Go to page ECRAN DEBUT HISTOIRE
+    header('Location: debutstory.php');
+}
 
 
 ?>

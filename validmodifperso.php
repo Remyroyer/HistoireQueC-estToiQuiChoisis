@@ -28,7 +28,7 @@ if (!isset($_SESSION['nomUser'])) {
 <?php
 
 require_once("fonctions.php");
-updateperso($_POST['idPerso'],$_POST['nomPerso'],$_POST['sexePerso']);
+updateperso($_POST['idPerso'], $_POST['nomPerso'], $_POST['sexePerso']);
 
 header('refresh:3;url=perso.php');
 echo "Mise à jour faite, vous allez être redirigé vers la page Perso dans un instant!";

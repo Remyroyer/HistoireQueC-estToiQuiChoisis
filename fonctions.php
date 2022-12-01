@@ -273,7 +273,7 @@ function selectCompte($mdpUser, $emailUser)
 }
 
 //Mise à jour du compte utilisateur
-function updateUser($id,$prenom,$mdpUser,$pseudo,$mail,$actif)
+function updateUser($id, $prenom, $mdpUser, $pseudo, $mail, $actif)
 {
     $connexion = connexion();
     $mdpUser = md5($mdpUser);
@@ -282,9 +282,6 @@ function updateUser($id,$prenom,$mdpUser,$pseudo,$mail,$actif)
     $insert_statement = $connexion->prepare($insert_query);
 
 
-
-
-    
     $insert_statement->bindParam(':prenomUser', $prenom);
     $insert_statement->bindParam(':mdpUser', $mdpUser);
     $insert_statement->bindParam(':actifUser', $actif);
@@ -306,7 +303,7 @@ function selectPerso($idUser)
     $insert_query = "SELECT * FROM perso WHERE Id_utilisateur=:Id_utilisateur AND actifPerso=:actifPerso";
     $insert_statement = $connexion->prepare($insert_query);
 
-    $actifPerso=1;
+    $actifPerso = 1;
 
     $insert_statement->bindParam(':Id_utilisateur', $idUser);
     $insert_statement->bindParam(':actifPerso', $actifPerso);
@@ -348,13 +345,14 @@ VALUES (:nomPerso, :sexePerso, :Id_utilisateur);";
 }
 
 //Désactiver un perso
-function desactiveperso($idperso){
+function desactiveperso($idperso)
+{
     $connexion = connexion();
 
     $insert_query = "UPDATE perso SET actifPerso=:actifPerso WHERE Id_perso=:Id_perso;";
     $insert_statement = $connexion->prepare($insert_query);
 
-    $actifPerso= 0;
+    $actifPerso = 0;
 
     $insert_statement->bindParam(':Id_perso', $idperso);
     $insert_statement->bindParam(':actifPerso', $actifPerso);
@@ -367,7 +365,8 @@ function desactiveperso($idperso){
 }
 
 //Afficher le perso selectionné
-function selectOnePerso($idPerso){
+function selectOnePerso($idPerso)
+{
     $connexion = connexion();
 
     $insert_query = "SELECT * FROM perso WHERE Id_perso=:Id_perso";
@@ -388,14 +387,15 @@ function selectOnePerso($idPerso){
     $connexion = deconnexion();
 }
 
-function updateperso($idPerso,$nomPerso,$sexePerso){
+function updateperso($idPerso, $nomPerso, $sexePerso)
+{
     $connexion = connexion();
 
     $insert_query = "UPDATE perso SET nomPerso=:nomPerso, sexePerso=:sexePerso WHERE Id_perso=:Id_perso;";
     $insert_statement = $connexion->prepare($insert_query);
 
-    $sexe=substr($sexePerso, 0, 15);
-    
+    $sexe = substr($sexePerso, 0, 15);
+
     $insert_statement->bindParam(':Id_perso', $idPerso);
     $insert_statement->bindParam(':nomPerso', $nomPerso);
     $insert_statement->bindParam(':sexePerso', $sexe);
@@ -405,7 +405,6 @@ function updateperso($idPerso,$nomPerso,$sexePerso){
 
     $connexion = deconnexion();
 }
-
 
 
 ?>

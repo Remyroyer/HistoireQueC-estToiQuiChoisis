@@ -19,7 +19,7 @@ if ($_POST["actionval"] === "1") {
     setcookie('idEvent', intval($_POST["eventval"]) + 1);
     //Le joueur gagne un coup supplémentaire
     setcookie('nbcoups', $_COOKIE['nbcoups'] - 1);
-    if($_COOKIE['nbcoups']<=0){
+    if ($_COOKIE['nbcoups'] <= 0) {
         setcookie('nbcoups', 0);
     }
     header('Location: gameplay.php');

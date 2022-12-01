@@ -62,19 +62,19 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
                            hidden><?php echo $resultat[$a]['sexePerso']; ?></td>
                 <td><input type="submit"></td>
                 <input type="text" name="debuthistoire"
-                                                value="true" hidden></td>
-                </form>
-                <!--Modification du perso -->
-                <form action="modifperso.php" method="POST">
+                       value="true" hidden></td>
+            </form>
+            <!--Modification du perso -->
+            <form action="modifperso.php" method="POST">
                 <td><input name="idPerso" value="<?php echo $resultat[$a]['Id_perso']; ?>"
                            hidden><input type="submit"></td>
-                </form>
+            </form>
 
-                <!--Mise en cache du perso -->
-                <form action="cacheperso.php" method="POST">
+            <!--Mise en cache du perso -->
+            <form action="cacheperso.php" method="POST">
                 <td><input name="idPerso" value="<?php echo $resultat[$a]['Id_perso']; ?>"
                            hidden><input type="submit"></td>
-                </form>
+            </form>
         </tr>
         <?php
         $a++;

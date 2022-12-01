@@ -26,27 +26,25 @@ if (!isset($_SESSION['nomUser'])) {
 
 <?php
 require_once("fonctions.php");
-$result=selectOnePerso($_POST['idPerso']);
+$result = selectOnePerso($_POST['idPerso']);
 //var_dump($result);
 ?>
 
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="img/simone.png" alt="image du perso">
-  <div class="card-body">
-    <form action="validmodifperso.php" method="POST">
-    <input name="idPerso" value="<?php echo $_POST['idPerso'] ?>">
-    <h5 class="card-title"><input name="nomPerso" value="<?php echo $result[0]['nomPerso'] ?>"required></h5>
-    <p class="card-text">
-        <div>
-        Sexe: <input name="sexePerso" value="<?php echo $result[0]['sexePerso'] ?>"required>
-        </div>
-        <br>
-        <input type="submit" class="btn btn-primary">
-    </form>
-  </div>
+    <img class="card-img-top" src="img/simone.png" alt="image du perso">
+    <div class="card-body">
+        <form action="validmodifperso.php" method="POST">
+            <input name="idPerso" value="<?php echo $_POST['idPerso'] ?>">
+            <h5 class="card-title"><input name="nomPerso" value="<?php echo $result[0]['nomPerso'] ?>" required></h5>
+            <p class="card-text">
+            <div>
+                Sexe: <input name="sexePerso" value="<?php echo $result[0]['sexePerso'] ?>" required>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
 </div>
-
-
 
 
 </body>
