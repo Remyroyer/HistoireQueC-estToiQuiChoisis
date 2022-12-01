@@ -5,6 +5,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 date_default_timezone_set('Europe/Paris');
 date_default_timezone_get();
 
+//Infos à retourner pour la modification du compte
 //Création de la SESSION Utilisateur
 if (isset($_POST["nomUser"])) {
     $_SESSION["nomUser"] = $_POST["nomUser"];
