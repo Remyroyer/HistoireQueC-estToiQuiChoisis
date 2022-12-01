@@ -34,7 +34,7 @@ $result = selectOnePerso($_POST['idPerso']);
     <img class="card-img-top" src="img/simone.png" alt="image du perso">
     <div class="card-body">
         <form action="validmodifperso.php" method="POST">
-            <input name="idPerso" value="<?php echo $_POST['idPerso'] ?>">
+            <input name="idPerso" value="<?php echo $_POST['idPerso'] ?>" hidden>
             <h5 class="card-title"><input name="nomPerso" value="<?php echo $result[0]['nomPerso'] ?>" required></h5>
             <p class="card-text">
             <div>

@@ -15,6 +15,9 @@ if (!isset($_COOKIE['nomPerso']) && !isset($_POST['nomPerso'])) {
         setcookie('nomPerso', $_POST['nomPerso'], time() + 3600 * 24, '/', '', false, false);
     }
 }
+if (isset($_COOKIE['nomPerso']) && isset($_POST['nomPerso'])) {
+    setcookie('nomPerso', $_POST['nomPerso']);
+}
 
 //Vérification histoire sinon redirection ou création du cookie
 if (isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {

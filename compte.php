@@ -40,7 +40,7 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
                                         value="<?php echo $result[0]['Id_utilisateur']; ?>" hidden></p>
             <p class="card-text">Prénom : <input type="text" name="prenom" size="18"
                                                  value="<?php echo $result[0]['prenomUser']; ?>" required></p>
-                                                 <span>Le mot de passe est nécessaire pour toute modification :</span>
+                                                 <span class="text-warning bg-dark">Le mot de passe est nécessaire pour toute modification :</span>
             <p class="card-text">Mot de passe Actuel : <input type="password" name="mdp" size="24" required></p>
             <p class="card-text">Nouveau mot de passe : <input type="password" name="mdp1" size="24"></p>
             <p class="card-text">Confirmation : <input type="password" name="mdp2" size="24"></p>

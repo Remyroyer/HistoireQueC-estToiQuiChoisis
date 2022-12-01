@@ -21,10 +21,6 @@ if (!isset($_SESSION['nomUser'])) {
     <title>Page Personnage</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a><br>
-<a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Perso</a><br>
-
 <?php
 
 require_once("fonctions.php");
