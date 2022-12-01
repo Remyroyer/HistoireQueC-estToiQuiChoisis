@@ -31,9 +31,7 @@ if ($_POST["actionval"] === "1") {
     //Le joueur perd un coup
     setcookie('nbcoups', intval($_COOKIE['nbcoups']) + 1);
     header('Location: gameplay.php');
-
 }
-
 
 echo $_COOKIE['idEvent'];
 

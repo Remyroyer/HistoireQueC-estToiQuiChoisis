@@ -24,5 +24,7 @@ if (!isset($_SESSION['nomUser'])) {
 <a href="histoire.php">Page des histoires</a><br>
 <a href="compte.php">Mon Compte</a>
 Fin de l'histoire!!!
+
+Que voullez-vous faire?
 </body>
 </html>

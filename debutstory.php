@@ -22,10 +22,11 @@ if (!isset($_SESSION['nomUser'])) {
 <a href="compte.php">Mon Compte</a>
 <a href="perso.php">Changer/Créer Perso</a>
 
-    ECRAN DEBUT HISTOIRE
+    ECRAN DEBUT HISTOIRE - Mettre les infos!!!
 
 <?php
     header('refresh:3;url=gameplay.php');
+    echo "Vous allez être redirigé vers la page du jeu dans un instant!";
     ?>
 
 </body>
