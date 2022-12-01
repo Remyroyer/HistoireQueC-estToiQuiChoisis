@@ -156,8 +156,8 @@ if (isset($_POST['nomPerso'])) {
 
                 echo "<br>" . "Fin de l'histoire...";
 
-                header('refresh:3;url=gagne.php');
-                echo "VOUS... ";
+                header('refresh:10;url=gagne.php');
+                echo "<br>" . "Vous allez être redirigé dans un instant... ";
                 //header('Location: gagne.php');
                 //Bouton de redirection...
 
