@@ -26,9 +26,9 @@ if (!isset($_SESSION['nomUser'])) {
 <?php
 
 //Supprime les infos de l'histoire précédente...
-setcookie('idHistoire', "");
-setcookie('idEvent', "");
-setcookie('nbcoups', 0);
+setcookie('idHistoire', "", time() + 3600 * 24, '/', '', false,false);
+setcookie('idEvent', "", time() + 3600 * 24, '/', '', false,false);
+setcookie('nbcoups', 0, time() + 3600 * 24, '/', '', false,false);
 
 //Requete SQL pour affichage des histoires
 require_once("fonctions.php");

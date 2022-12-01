@@ -3,11 +3,17 @@
 session_unset();
 // session_destroy();
 session_write_close();
-setcookie(session_name(), '', 0, '/');
+setcookie(session_name(), '', time() + 3600 * 24, '/', '', false,false);
 $_SESSION['nomUser'] = null;
+setcookie('nbcoups', '', time() + 3600 * 24, '/', '', false,false);
+setcookie('idEvent', '', time() + 3600 * 24, '/', '', false,false);
+setcookie('nomPerso', '', time() + 3600 * 24, '/', '', false,false);
+setcookie('idUtilisateur', '', time() + 3600 * 24, '/', '', false,false);
+setcookie('idhistoire', '', time() + 3600 * 24, '/', '', false,false);
 
 session_unset();
 session_write_close();
+
 
 //.......................................................
 //Ne doit on pas aussi détruire le perso, histoire?

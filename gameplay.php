@@ -12,11 +12,11 @@ if (!isset($_COOKIE['nomPerso']) && !isset($_POST['nomPerso'])) {
     header('Location: perso.php');
 } else {
     if (!isset($_COOKIE['nomPerso']) && isset($_POST['nomPerso'])) {
-        setcookie('nomPerso', $_POST['nomPerso'], time() + 3600 * 24, '/', '', false, false);
+        setcookie('nomPerso', $_POST['nomPerso'], time() + 3600 * 24, '/', '', false,false);
     }
 }
 if (isset($_COOKIE['nomPerso']) && isset($_POST['nomPerso'])) {
-    setcookie('nomPerso', $_POST['nomPerso']);
+    setcookie('nomPerso', $_POST['nomPerso'], time() + 3600 * 24, '/', '', false,false);
 }
 
 //Vérification histoire sinon redirection ou création du cookie
@@ -25,7 +25,7 @@ if (isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
 }
 if (isset($_COOKIE['idhistoire']) && isset($_POST['id_histoire'])) {
     $idhistoire = $_POST['id_histoire'];
-    setcookie('idhistoire', $_POST['id_histoire']);
+    setcookie('idhistoire', $_POST['id_histoire'], time() + 3600 * 24, '/', '', false,false);
 }
 if (!isset($_COOKIE['idhistoire']) && !isset($_POST['id_histoire'])) {
     header('Location: histoire.php');
@@ -105,6 +105,10 @@ if (isset($_POST['nomPerso'])) {
         $resultEvent = selectevent($idEvent);
 
         //Si la valeur de Event affiché est superieur à celle mis en memoire Alors on affiche l'histoire
+if(!isset($_COOKIE['idEvent'])){
+    setcookie('idEvent', 1, time() + 3600 * 24, '/', '', false, false);
+}
+
         if ($idEvent >= $_COOKIE['idEvent']) {
 
             echo $idEvent;
