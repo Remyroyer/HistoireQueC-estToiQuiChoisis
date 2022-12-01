@@ -14,7 +14,6 @@ setcookie('idhistoire', '', time() + 3600 * 24, '/', '', false,false);
 session_unset();
 session_write_close();
 
-
 //.......................................................
 //Ne doit on pas aussi détruire le perso, histoire?
 

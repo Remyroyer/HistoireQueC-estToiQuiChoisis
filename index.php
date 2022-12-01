@@ -77,7 +77,8 @@ if (!isset($_POST["emailUser"])) {
 <div>
     <form action="deconnexion.php" method="POST"><input type="submit" value="Déconnexion"></form>
 </div>
-
+<?php
+?>
 
 </body>
 </html>
