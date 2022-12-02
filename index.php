@@ -36,6 +36,8 @@ if (isset($_SESSION)) {
     ?>
     <a href="compte.php">Mon Compte</a>
     <a href="histoire.php">Page des histoires</a>
+    <a href="coloriage.php">Coloriage #1</a>
+    <a href="coloriage2.php">Coloriage #2</a>
     <br>
     <?php
 }
