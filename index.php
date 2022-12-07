@@ -42,7 +42,8 @@ if (isset($_SESSION)) {
     <?php
 }
 
-if (!isset($_POST["emailUser"])) {
+//Avant SESSION, nous avions POST
+if (!isset($_SESSION["emailUser"])) {
     //Si l'e-mail n'est pas renseigné on affiche le form de création compte
     include_once 'form.php';
 } else {
@@ -68,10 +69,23 @@ if (!isset($_POST["emailUser"])) {
     } else {
         //Si la vérification est positive, on redirige vers la page des histoires
         $txtpseudo = "Utilisateur reconnu: " . $pseudo;
-        header('refresh:3;url=histoire.php');
-        echo "Vous allez être redirigé vers la page des histoires, dans un instant!";
-    }
 
+
+        $admin = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
+        if($admin[0]['admin']==1){
+            //echo "Vous êtes un ADMIN!!!";
+            $_SESSION['ADMIN'] = true;
+            echo "Vous êtes un ADMIN!!!";
+            echo "<a href='adminhistoire.php'>Histoire</a>";
+        }else{
+        // header('refresh:3;url=histoire.php');
+        // echo "Vous allez être redirigé vers la page des histoires, dans un instant!";
+        }
+
+
+       
+    }
+    
     echo $txtpseudo;
 }
 ?>

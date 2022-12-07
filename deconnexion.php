@@ -10,6 +10,7 @@ setcookie('idEvent', '', time() + 3600 * 24, '/', '', false,false);
 setcookie('nomPerso', '', time() + 3600 * 24, '/', '', false,false);
 setcookie('idUtilisateur', '', time() + 3600 * 24, '/', '', false,false);
 setcookie('idhistoire', '', time() + 3600 * 24, '/', '', false,false);
+$_SESSION['ADMIN']=null;
 
 session_unset();
 session_write_close();
