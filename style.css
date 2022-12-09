@@ -87,6 +87,12 @@ transform: rotate(-4.46deg);
 }
 
 #lapin{
-  height:300px;
+  height:320px;
   background: #FFC107;
+}
+
+.gagnee{
+  background-color: cornflowerblue;
+  /* color :; */
+  opacity: 0.7;
 }

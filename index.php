@@ -34,8 +34,6 @@ if (isset($_POST["nomUser"])) {
 <?php
 if (isset($_SESSION)) {
     ?>
-    <a href="compte.php">Mon Compte</a>
-    <a href="histoire.php">Page des histoires</a>
     <a href="coloriage.php">Coloriage #1</a>
     <a href="coloriage2.php">Coloriage #2</a>
     <br>
@@ -61,40 +59,50 @@ if (!isset($_SESSION["emailUser"])) {
         session_write_close();
         setcookie(session_name(), '', 0, '/');
         $_SESSION['nomUser'] = null;
+        
         ?>
-        <form action="forminscription.php" method="POST">
+        <!-- <form action="forminscription.php" method="POST">
             <input type="submit" value="Je veux créer un compte">
-        </form>
+        </form> -->
+        <div><a href="forminscription.php">Je veux créer un compte</a></div>
+        <div><a href="index.php">Je veux ressayer</a></div>
         <?php
     } else {
         //Si la vérification est positive, on redirige vers la page des histoires
-        $txtpseudo = "Utilisateur reconnu: " . $pseudo;
-
 
         $admin = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
-        if($admin[0]['admin']==1){
+
+        if($admin[0]['actifUser'] != "1")
+        {
+            header('refresh:3;url=deconnexion.php');
+            echo "Compte banni ou désactivé.";
+        }elseif($admin[0]['admin']==1){
             //echo "Vous êtes un ADMIN!!!";
+            ?>
+            <a href="compte.php">Mon Compte</a>
+            <a href="histoire.php">Page des histoires</a> 
+            <?php
             $_SESSION['ADMIN'] = true;
-            echo "Vous êtes un ADMIN!!!";
-            echo "<a href='adminhistoire.php'>Histoire</a>";
+            echo "<br>Admin <strong>" . $pseudo . " </strong> reconnu <br>";
+            echo "<a href='adminhistoire.php'>Ajouter une histoire</a>";
+            echo " / <a href='modifhistoire.php'>Modifier une histoire</a>";
         }else{
-        // header('refresh:3;url=histoire.php');
-        // echo "Vous allez être redirigé vers la page des histoires, dans un instant!";
+            ?>
+            <a href="compte.php">Mon Compte</a>
+            <a href="histoire.php">Page des histoires</a> 
+            <?php
+            echo "Utilisateur reconnu: " . $pseudo;
         }
 
-
-       
+        // echo $txtpseudo;
+        ?>
+        <br>
+        <div>
+            <form action="deconnexion.php" method="POST"><input type="submit" value="Déconnexion"></form>
+        </div>
+        <?php
     }
-    
-    echo $txtpseudo;
 }
 ?>
-<br>
-<div>
-    <form action="deconnexion.php" method="POST"><input type="submit" value="Déconnexion"></form>
-</div>
-<?php
-?>
-
 </body>
 </html>

@@ -104,8 +104,67 @@ VALUES (:nomUser, :prenomUser, :mdpUser, :dateCreationUser, :actifUser, :pseudoU
     $connexion = deconnexion();
 }
 
+//Pour affichage histoire
+function affichagehistoire($idhistoire){
+    $connexion = connexion();
+    try {
+        $insert_query = "SELECT * FROM histoire WHERE Id_histoire=:Id_histoire";
+
+        $insert_statement = $connexion->prepare($insert_query);
+
+        $insert_statement->bindParam(':Id_histoire', $idhistoire);
+
+        $insert_statement->execute();
+        $result = $insert_statement->fetchAll();
+
+        if ($result != false) {
+            return $result;
+        }
+
+        $insert_statement = null;
+
+
+    } catch (Exception $e) {
+        //Gestion d'erreur
+        // die();
+    }
+
+    $connexion = deconnexion();
+
+
+}
+
+
+
 //Pour affichage des différentes histoires
 function selectStory()
+{
+    $connexion = connexion();
+    try {
+        $insert_query = "SELECT * FROM histoire WHERE actif='1'";
+
+        $insert_statement = $connexion->prepare($insert_query);
+
+        $insert_statement->execute();
+        $result = $insert_statement->fetchAll();
+
+
+        if ($result != false) {
+            return $result;
+        }
+
+        $insert_statement = null;
+
+
+    } catch (Exception $e) {
+        //Gestion d'erreur
+        // die();
+    }
+
+    $connexion = deconnexion();
+}
+
+function selectStoryADMIN()
 {
     $connexion = connexion();
     try {
@@ -405,6 +464,112 @@ function updateperso($idPerso, $nomPerso, $sexePerso)
 
     $connexion = deconnexion();
 }
+
+function modifhistoire($id_histoire,$nomHistoire,$auteurHistoire,$descriptionHistoire,$genreHistoire,$actif){
+    $connexion = connexion();
+
+    $insert_query = "UPDATE histoire SET nomHistoire=:nomHistoire, auteurHistoire=:auteurHistoire, descriptionHistoire=:descriptionHistoire,
+    genreHistoire=:genreHistoire, actif=:actif WHERE Id_histoire=:Id_histoire;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+ if ($actif=='on'){
+    $actif2=1;
+ }else{
+    $actif2=0;
+ }
+
+    $insert_statement->bindParam(':Id_histoire', $id_histoire);
+    $insert_statement->bindParam(':nomHistoire', $nomHistoire);
+    $insert_statement->bindParam(':auteurHistoire', $auteurHistoire);
+    $insert_statement->bindParam(':descriptionHistoire', $descriptionHistoire);
+    $insert_statement->bindParam(':genreHistoire', $genreHistoire);
+    $insert_statement->bindParam(':actif', $actif2);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+}
+
+function updateLieu($Id_lieu,$nomLieu,$imgLieu,$couleurLieu){
+    $connexion = connexion();
+
+    $insert_query = "UPDATE lieu SET nomLieu=:nomLieu ,imgLieu=:imgLieu ,couleurLieu=:couleurLieu WHERE Id_lieu=:Id_lieu";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':nomLieu', $nomLieu);
+    $insert_statement->bindParam(':imgLieu', $imgLieu);
+    $insert_statement->bindParam(':couleurLieu', $couleurLieu);
+    $insert_statement->bindParam(':Id_lieu', $Id_lieu);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+}
+
+function updateEvent($Id_evenement,$nomEvent){
+    $connexion = connexion();
+
+    $insert_query = "UPDATE evenement SET nomEvent=:nomEvent WHERE Id_evenement=:Id_evenement";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':Id_evenement', $Id_evenement);
+    $insert_statement->bindParam(':nomEvent', $nomEvent);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+
+
+}
+
+function updateActions($Id_actions,$nomAction){
+    $connexion = connexion();
+
+    $insert_query = "UPDATE actions SET nomAction=:nomAction WHERE Id_actions=:Id_actions";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':Id_actions', $Id_actions);
+    $insert_statement->bindParam(':nomAction', $nomAction);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+}
+
+function updateactionevent($Id_actions,$radio,$i){
+
+
+    $connexion = connexion();
+
+    $insert_query = "UPDATE actionevent SET ok=:ok WHERE Id_actions=:Id_actions";
+    
+    $insert_statement = $connexion->prepare($insert_query);
+
+if($radio==$i){
+    $ok='1';
+}else{
+    $ok='0';
+}
+
+    $insert_statement->bindParam(':Id_actions', $Id_actions);
+    $insert_statement->bindParam(':ok', $ok);
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+
+
+
+
+
+
+}
+
 
 
 ?>
