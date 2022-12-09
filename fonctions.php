@@ -563,13 +563,94 @@ if($radio==$i){
 
     $connexion = deconnexion();
 
-
-
-
-
-
 }
 
+function selectutilisateur(){
+    $connexion = connexion();
 
+    $insert_query = "SELECT * FROM utilisateur;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->execute();
+
+    $result = $insert_statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result != false) {
+        return $result;
+    }
+
+    $insert_statement = null;
+
+    $connexion = deconnexion();  
+}
+
+function selectIdutilisateur($Id_utilisateur){
+    $connexion = connexion();
+
+    $insert_query = "SELECT * FROM utilisateur WHERE Id_utilisateur=:Id_utilisateur;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':Id_utilisateur', $Id_utilisateur);
+
+    $insert_statement->execute();
+
+    $result = $insert_statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result != false) {
+        return $result;
+    }
+
+    $insert_statement = null;
+
+    $connexion = deconnexion();  
+}
+
+function adminUpdateUser($Id_utilisateur,$admin,$nomUser,$prenomUser,$mdpUser,$actifUser,$pseudoUser,$emailUser,$imgUser)
+{
+    $connexion = connexion();
+
+
+    if($mdpUser!=''){
+        $mdpUser = md5($mdpUser);
+    $insert_query = "UPDATE utilisateur SET nomUser=:nomUser,prenomUser=:prenomUser,mdpUser=:mdpUser,actifUser=:actifUser,pseudoUser=:pseudoUser,emailUser=:emailUser,admin=:admin,imgUser=:imgUser WHERE Id_utilisateur=:Id_utilisateur;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':mdpUser', $mdpUser);
+    $insert_statement->bindParam(':Id_utilisateur', $Id_utilisateur);
+    $insert_statement->bindParam(':admin', $admin);
+    $insert_statement->bindParam(':nomUser', $nomUser);
+    $insert_statement->bindParam(':prenomUser', $prenomUser);
+    $insert_statement->bindParam(':actifUser', $actifUser);
+    $insert_statement->bindParam(':pseudoUser', $pseudoUser);
+    $insert_statement->bindParam(':emailUser', $emailUser);
+    $insert_statement->bindParam(':imgUser', $imgUser);
+
+    }else{
+    $insert_query = "UPDATE utilisateur SET nomUser=:nomUser,prenomUser=:prenomUser,actifUser=:actifUser,pseudoUser=:pseudoUser,emailUser=:emailUser,admin=:admin,imgUser=:imgUser WHERE Id_utilisateur=:Id_utilisateur;";
+    $insert_statement = $connexion->prepare($insert_query);
+
+    $insert_statement->bindParam(':Id_utilisateur', $Id_utilisateur);
+    $insert_statement->bindParam(':admin', $admin);
+    $insert_statement->bindParam(':nomUser', $nomUser);
+    $insert_statement->bindParam(':prenomUser', $prenomUser);
+    $insert_statement->bindParam(':actifUser', $actifUser);
+    $insert_statement->bindParam(':pseudoUser', $pseudoUser);
+    $insert_statement->bindParam(':emailUser', $emailUser);
+    $insert_statement->bindParam(':imgUser', $imgUser);
+    }
+
+    $insert_statement->execute();
+    $insert_statement = null;
+
+    $connexion = deconnexion();
+}
 
 ?>
+
+<!-- Fonction JS -->
+<script>
+    function JSConfDesact() {
+        const checked = document.querySelector('#actif:checked') !== null;
+        alert ("Vous avez fait une modification sur votre compte, il risque d'être supprimé");
+    }
+</script>

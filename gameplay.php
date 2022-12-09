@@ -120,6 +120,8 @@ if (isset($_POST['nomPerso'])) {
         //Requete SQL select evenements pour connaitre les infos de l'evenements pour affichage (nom du lieu...)
         require_once("fonctions.php");
         $resultEvent = selectevent($idEvent);
+        $idlieu = $resultEvent[0]['Id_lieu'];
+        $resultLieu = selectLieu($idlieu);
 
         //Si la valeur de Event affiché est superieur à celle mis en memoire Alors on affiche l'histoire
 if(!isset($_COOKIE['idEvent'])){
@@ -127,10 +129,21 @@ if(!isset($_COOKIE['idEvent'])){
 }
 
         if ($idEvent >= $_COOKIE['idEvent']) {
+            // var_dump($resultLieu[0]['imgLieu']);
+
+            ?>
+                <style>
+                body {
+                    background-image: url("<?php echo "img/" .$resultLieu[0]['imgLieu']. ""?>");
+                    background-attachment: scroll;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    }
+                </style>
+            <?php
 
             echo $idEvent;
 
-            $idlieu = $resultEvent[0]['Id_lieu'];
             //Requete SQL pour afficher le lieu
             $resultLieu = selectLieu($idlieu);
             ?><br><?php
@@ -152,7 +165,7 @@ if(!isset($_COOKIE['idEvent'])){
                     ?>
                     <form action="validaction.php" method="POST">
                         <?php
-                        //var_dump($resultaction["Id_actions"]);
+                        //var_dump($resultaction);
                         $idaction = $resultaction["Id_actions"];
                         $actionok = $resultaction["ok"];
 

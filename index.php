@@ -86,6 +86,7 @@ if (!isset($_SESSION["emailUser"])) {
             echo "<br>Admin <strong>" . $pseudo . " </strong> reconnu <br>";
             echo "<a href='adminhistoire.php'>Ajouter une histoire</a>";
             echo " / <a href='modifhistoire.php'>Modifier une histoire</a>";
+            echo " / <a href='admincompte.php'>Voir les comptes utilisateurs</a>";
         }else{
             ?>
             <a href="compte.php">Mon Compte</a>

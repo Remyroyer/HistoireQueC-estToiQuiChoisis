@@ -12,14 +12,9 @@ if (!isset($_SESSION['nomUser'])) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="img/png" href="img/favicon.jpg">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Ecran début histoire</title>
 </head>
 
@@ -35,28 +30,27 @@ if (!isset($_SESSION['nomUser'])) {
 
     $idHistoire = $_COOKIE['idhistoire'];
 
-    $idEvent = $_COOKIE['idEvent'];
-    $resultEvent = selectevent($idEvent);
-    $idlieu = $resultEvent[0]['Id_lieu'];
-    $resultLieu = selectLieu($idlieu);
-
     $infoHistoire = affichagehistoire($idHistoire);
 
     // var_dump($infoHistoire);
 
     echo "Histoire sélectionnée : <h2>".$infoHistoire[0]['nomHistoire'] ."</h2><br>";
     echo "Personnage sélectionné : " . $_COOKIE['nomPerso'];
-   ?> 
-   
-   <style>
-    body {
-        background-image: url("<?php echo "img/" .$resultLieu[0]['imgLieu'].""; ?>");
-        background-attachment: scroll;
-        background-repeat: no-repeat;
-        background-size: cover;
-        }
-    </style>
-        
+
+    switch($_COOKIE['idhistoire'])
+    {
+        case 1:
+            ?>
+            <style>body {background-image: url("img/Roi Yome 2.png");}</style>
+        <?php
+            break;
+        case 2:
+            ?>
+            <style>body {background-image: url("img/Train.png");}</style>
+        <?php
+            break;
+    }
+        ?>
         <h2><a href="gameplay.php">Commencer cette histoire</a></h2>
         <style>body {
             background-attachment: scroll;
@@ -64,8 +58,6 @@ if (!isset($_SESSION['nomUser'])) {
             background-size: cover;
             }</style>
     </style>
-
-
 
 
 

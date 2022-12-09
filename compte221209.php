@@ -51,11 +51,11 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
             // echo $result[0]['actifUser'];
             if ($result[0]['actifUser'] != 1) {
                 ?>
-                <p class="card-text">Actif: <input type="checkbox" name="actif" onchange="JSConfDesact()" ></p>
+                <p class="card-text">Actif: <input type="checkbox" name="actif"></p>
                 <?php
             } else {
                 ?>
-                <p class="card-text">Actif: <input type="checkbox" name="actif" onchange="JSConfDesact()" checked ></p>        
+                <p class="card-text">Actif: <input type="checkbox" name="actif" checked='on'></p>
                 <?php
             }
             ?>

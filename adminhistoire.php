@@ -58,7 +58,7 @@ echo "Combien d'événements dans votre histoire?" . "<br>
 for ($n=1;$n<=$oskour;$n++){
     echo "<div class='container vertical-scrollable border border-dark rounded-top p-1'>
         <label for='lieuNom'>Lieu :</label><input class='form-control' type='text' name='lieuNom$n' required>
-        <label for='lieuImg' hidden>Image :</label><input class='form-control' type='text' name='lieuImg$n' hidden>
+        <label for='lieuImg' >Image :</label><input type='file' class='form-control' type='text' name='lieuImg$n' >
         <label for='lieuCouleur' hidden>Couleur :</label><input class='form-control' type='text' name='lieuCouleur$n' hidden><br>
         <label for='actionsNom'>Evénement :</label><input class='form-control' type='text' name='eventNom$n' class='col-xs-2' required>
             <div class='p-1'>";

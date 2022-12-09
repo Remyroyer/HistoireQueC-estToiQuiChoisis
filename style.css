@@ -96,3 +96,7 @@ transform: rotate(-4.46deg);
   /* color :; */
   opacity: 0.7;
 }
+
+.lapinou{
+  border-top-left-radius: 15px;
+}
