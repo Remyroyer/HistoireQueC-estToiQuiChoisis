@@ -74,25 +74,34 @@ for ($n=1;$n<=$oskour;$n++){
                     <div class='col-1'>
                     <input type='radio' id='contactChoice1' name='action$n' value='1' required/>
                     </div>
-                    </div>
-
+                    </div><br>
+                    
                     <div class='row justify-content-start'>
                     <div class='col-11'>
                     <input type='text' class='form-control' name='eventHistoireIdEvenement2$n' value='' required>
                     </div>
+                    <div class='col-1'>
                     <input type='radio' id='contactChoice2' name='action$n' value='2' required />
                     </div>
-                    
-                    <div class='w-75'>
+                    </div><br>
+
+                    <div class='row justify-content-start'>
+                    <div class='col-11'>
                     <input type='text' class='form-control' name='eventHistoireIdEvenement3$n' value='' required>
+                    </div>
+                    <div class='col-1'>
                     <input type='radio' id='contactChoice3' name='action$n' value='3' required />
                     </div>
-                    
-                    <div class='w-75'>
+                    </div><br>
+
+                    <div class='row justify-content-start'>
+                    <div class='col-11'>
                     <input type='text' class='form-control' name='eventHistoireIdEvenement4$n' value='' required>
+                    </div>
+                    <div class='col-1'>
                     <input type='radio' id='contactChoice4' name='action$n' value='4' required />
                     </div>
-                    </div>
+                    </div><br>
                     </fieldset>";
                 }
                 if($n==$oskour){

@@ -60,12 +60,12 @@ if ((isset($_POST['debuthistoire'])) && ((isset($_COOKIE['nomPerso'])) || (isset
 <body>
 <a href="index.php">Retour à l'accueil</a><br>
 <a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Compte</a><br>
-<a href="perso.php">Changer / Créer Perso</a><br>
+<a href="compte.php">Mon Compte</a>
+<a href="perso.php">Changer/Créer Perso</a>
 <br>
 <?php
 //Affichage de l'histoire
-echo "Vous avez choisi l'histoire : " . $idhistoire;
+echo "Vous avez choisi l'histoire: " . $idhistoire;
 ?><br><?php
 
 //Requete SQL select evenements de l'histoire pour affichage
@@ -73,35 +73,18 @@ require_once("fonctions.php");
 $result = selecteventhistoire($idhistoire);
 $a = 0;
 
-echo "Vie : ";
-switch ($_COOKIE['nbcoups']){
-    case 0:
-        echo "❤️❤️❤️";
-        break;
-    case 1:
-        echo "❤️❤️💔";
-        break;
-    case 2:
-        echo "❤️💔💔";
-        break;
-    case 3:
-        echo "💔💔💔";
-        break;
-    }
-;?><br><?php
-
 //Si le nb de coups est > à 3 : PERDU......
-// echo "Nombre de coups en cours: " . $_COOKIE['nbcoups'];
+echo "Nombre de coups en cours: " . $_COOKIE['nbcoups']; ?><br><?php
 if ($_COOKIE['nbcoups'] >= 3) {
     header('Location: perdu.php');
 }
 
 //Affichage du nom du perso
 if (isset($_POST['nomPerso'])) {
-    echo "Ton perso s'appel : " . $_POST['nomPerso'] . "<br>";
+    echo "Ton perso s'appel: " . $_POST['nomPerso'] . "<br>";
 } else {
     if (isset($_COOKIE['nomPerso'])) {
-        echo "Ton perso s'appel : " . $_COOKIE['nomPerso'] . "<br>";
+        echo "Ton perso s'appel: " . $_COOKIE['nomPerso'] . "<br>";
     }
 }
 
@@ -134,14 +117,14 @@ if(!isset($_COOKIE['idEvent'])){
             //Requete SQL pour afficher le lieu
             $resultLieu = selectLieu($idlieu);
             ?><br><?php
-            echo "Votre situation dans l'espace : ";
+            echo "Votre situation dans l'espace: ";
             echo $resultLieu[0]['nomLieu'];
             ?><br><?php
-            echo "Ce qui ce passe : ";
+            echo "Ce qui ce passe: ";
             echo $resultEvent[0]['nomEvent'];
             $idEvenement = $resultEvent[0]['Id_evenement'];
             ?><br><?php
-            echo "Vos choix : ";
+            echo "Vos choix:";
 
             //Requete SQL pour afficher Id des actions dispos en fonction de l'événement
             $resultchoix = selectaction($idEvenement);
@@ -177,11 +160,14 @@ if(!isset($_COOKIE['idEvent'])){
 //A- Permet de boucler une seule fois
                 break;
             } else {
-                // echo "<br>" . "Fin de l'histoire...";
-                header('refresh:0;url=gagne.php');
-                // echo "<br>" . "Vous allez être redirigé dans un instant... ";
+
+                echo "<br>" . "Fin de l'histoire...";
+
+                header('refresh:10;url=gagne.php');
+                echo "<br>" . "Vous allez être redirigé dans un instant... ";
                 //header('Location: gagne.php');
                 //Bouton de redirection...
+
             }
         }
     }

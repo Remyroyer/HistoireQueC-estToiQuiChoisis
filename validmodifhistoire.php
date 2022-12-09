@@ -125,11 +125,11 @@ if(!is_null($res)){
     for($i=0;$i<=3;$i++){
         // echo $res[$i]['Id_actions'];
         ?>
-        <div class='w-85'>
+        <div class='w-75'>
         <input type='text' class="form-control" name='<?php echo "Id_actions".$n.$i; ?>' value="<?php echo $res[$i]['Id_actions'];?>" hidden>
         </div>
-        <div class='row w-50'>
-        <div class="">
+        <div class='row w-75'>
+        <div class="col-1">
         <?php
         $idaction=$res[$i]['Id_actions'];
         $action=selectActions($idaction);
@@ -140,7 +140,7 @@ if(!is_null($res)){
         }
         ?>
         </div>
-        <div class='w-75'>
+        <div class='col-11'>
         <input type='text' class='form-control' name='<?php echo "nomAction".$n.$i; ?>' value="<?php echo $action[0]['nomAction'];?>">
         </div>    
     </div>
