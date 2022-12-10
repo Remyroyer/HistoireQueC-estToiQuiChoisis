@@ -30,13 +30,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
                 <input type="text" id="prenomUser" name="prenomUser" hidden>
             <!--</div>-->
             <div>
-                <label for="emailUser">Email :</label>
-                <input type="email" id="emailUser" name="emailUser" required>
+                <label for="emailUser">Email :</label><br>
+                <input class="inputshadow w-100" type="email" id="emailUser" name="emailUser" required>
             </div>
             <br>
             <div>
                 <label for="mdpUser">Mot de passe :</label>
-                <input type="password" id="mdpUser" name="mdpUser" required>
+                <input class="inputshadow w-100" type="password" id="mdpUser" name="mdpUser" required>
             </div>
             <!--<div class="invisible">
                 <label for="pseudoUser">Pseudo :</label>-->
@@ -52,6 +52,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
     </form>
     </div>
 
+    <style>
+        .inputshadow{
+    box-shadow: inset 8px 8px 16px #d1d1d1, inset -8px -8px 16px #e9e9e9;
+    border: none;
+    border-radius: 3px;
+        }   
+    </style>
 
 </body>
 </html>

@@ -42,7 +42,7 @@ if (isset($_POST["nomUser"])) {
 
     <div class="container-fluid">
 	<div class="row">
-    <div class="col-5 col-sm-5 col-md-8 col-lg-8 col-xl-8 p-2"><h1 class="m-2 text-white">Le site que c'est toi qui décide des choix!</h1></div>
+    <div class="col-5 col-sm-5 col-md-8 col-lg-8 col-xl-8 p-2"><h1 class="m-2 text-white">Le site des histoires que c'est toi qui choisis!!!</h1></div>
 		<div class="titleframe col-7 col-sm-7 col-md-4 col-lg-4 col-xl-4 order-1 p-1 shadow border">
 
 <?php
