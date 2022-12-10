@@ -1,4 +1,4 @@
-<?php
+    <?php
 //Ouverture SESSION
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
@@ -134,10 +134,11 @@ if(!isset($_COOKIE['idEvent'])){
             ?>
                 <style>
                 body {
-                    background-image: url("<?php echo "img/" .$resultLieu[0]['imgLieu']. ""?>");
-                    background-attachment: scroll;
-                    background-repeat: no-repeat;
+                    background: url("<?php echo "img/" .$resultLieu[0]['imgLieu']. ""?>") no-repeat center center fixed;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
                     background-size: cover;
+                    -o-background-size: cover;
                     }
                 </style>
             <?php

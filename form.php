@@ -18,23 +18,19 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 </head>
 <body>
 <!-- <a href="index.php">Retour à l'accueil</a> -->
-<div>
-    <form action="forminscription.php" method="POST">
-        <input type="submit" value="Je veux créer un compte">
-    </form>
     <div class="container">
+        <h5>J'ai déjà un compte,</h5>
         <form action="index.php" method='POST'>
-
-            <div class="invisible">
-                <label for="nomUser">Nom :</label>
-                <input type="text" id="nomUser" name="nomUser">
-            </div>
-            <div class="invisible">
-                <label for="prenomUser">Prenom :</label>
-                <input type="text" id="prenomUser" name="prenomUser">
-            </div>
+            <!--<div class="invisible">
+                <label for="nomUser">Nom :</label>-->
+                <input type="text" id="nomUser" name="nomUser" hidden>
+           <!--  </div>
+           <div class="invisible">
+                <label for="prenomUser">Prenom :</label>-->
+                <input type="text" id="prenomUser" name="prenomUser" hidden>
+            <!--</div>-->
             <div>
-                <label for="emailUser">E-mail&nbsp;:</label>
+                <label for="emailUser">Email :</label>
                 <input type="email" id="emailUser" name="emailUser" required>
             </div>
             <br>
@@ -42,16 +38,19 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
                 <label for="mdpUser">Mot de passe :</label>
                 <input type="password" id="mdpUser" name="mdpUser" required>
             </div>
-            <div class="invisible">
-                <label for="pseudoUser">Pseudo :</label>
-                <input type="text" id="pseudoUser" name="pseudoUser">
-            </div>
-            <br>
-            <button type="submit" value="envoyer">Se connecter</button>
+            <!--<div class="invisible">
+                <label for="pseudoUser">Pseudo :</label>-->
+                <input type="text" id="pseudoUser" name="pseudoUser"  hidden>
+            <!--</div>-->
+            <button class="bottom rounded-1 border border-none m-1" type="submit" value="envoyer">Envoyer</button>
             <br>
         </form>
+        <br>
+        <h5>Je n'ai pas de compte,</h5>
+        <form action="forminscription.php" method="POST">
+        <input class="bottom rounded-1 border border-none m-1" type="submit" value="Je veux créer un compte">
+    </form>
     </div>
-</div>
 
 
 </body>
