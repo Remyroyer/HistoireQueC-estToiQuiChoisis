@@ -55,11 +55,13 @@ if ((isset($_POST['debuthistoire'])) && ((isset($_COOKIE['nomPerso'])) || (isset
     <title>Gameplay</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a><br>
-<a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Compte</a><br>
-<a href="perso.php">Changer / Créer Perso</a><br>
-<br>
+<header>
+<!-- Navigation -->
+<?php
+  include_once("menu.php");  
+?>
+</header>
+
 <?php
 //Affichage de l'histoire
 echo "Vous avez choisi l'histoire : " . $idhistoire;

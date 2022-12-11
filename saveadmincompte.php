@@ -17,10 +17,7 @@ if (!isset($_SESSION['ADMIN'])) {
     <title>Visualisation des comptes utilisateurs</title>
 </head>
 <body>
-<a href="index.php">Accueil</a><br>
-<a href="admincompte.php">Retour aux comptes utilisateurs</a><br>
 <?php
-
 echo $_POST['Id_utilisateur']."<br>";
 $Id_utilisateur=$_POST['Id_utilisateur'];
 

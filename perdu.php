@@ -17,9 +17,13 @@ if (!isset($_SESSION['nomUser'])) {
     <title>Perdu</title>
 </head>
 <body>
-    <a href="index.php">Retour à l'accueil</a><br>
-    <a href="histoire.php">Page des histoires</a><br>
-    <a href="compte.php">Mon Compte</a><br>
+<header>
+<!-- Navigation -->
+<?php
+  include_once("menu.php");  
+?>
+</header>
+
 
         <style>
             body {

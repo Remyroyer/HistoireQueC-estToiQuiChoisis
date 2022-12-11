@@ -17,9 +17,6 @@ if (!isset($_SESSION['nomUser'])) {
     <title>Page Personnage</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a><br>
-<a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Compte</a><br>
 
 <?php
 //Requete SQL pour désactiver le perso

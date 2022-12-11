@@ -7,6 +7,11 @@ if (!isset($_SESSION['nomUser'])) {
     header('Location: index.php');
 }
 
+include('fonctions.php');
+$idEvent = $_COOKIE['idEvent'];
+$infoEvent = selectEvent($idEvent);
+
+// var_dump($infoEvent);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,20 +22,12 @@ if (!isset($_SESSION['nomUser'])) {
     <title>Fin Histoire</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a>
-<a href="histoire.php">Page des histoires</a>
-<a href="compte.php">Mon Compte</a><br><br>
-
-<?php     
-
-include('fonctions.php');
-
-$idEvent = $_COOKIE['idEvent'];
-
-$infoEvent = selectEvent($idEvent);
-
-// var_dump($infoEvent);
+<header>
+<!-- Navigation -->
+<?php
+  include_once("menu.php");  
 ?>
+</header>
 <div class="gagnee">
     <?php    
         echo "<h4>".$infoEvent[0]['nomEvent'] ."</h4><br>";

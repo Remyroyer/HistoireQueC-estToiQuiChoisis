@@ -37,7 +37,7 @@ if (isset($_POST["nomUSer"])) {
     <title>Que C'est toi qui choisi l'histoire...</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a><br>
+
 <?php
 //Si le nom de l'utilisateur n'est pas renseigné, on affiche le form
 if (!isset($_POST["nomUser"])) {
