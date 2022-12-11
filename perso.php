@@ -7,24 +7,6 @@ if (!isset($_SESSION['nomUser'])) {
     header('Location: index.php');
 }
 
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="icon" type="img/png" href="img/favicon.jpg">
-    <title>Page Personnage</title>
-</head>
-<body>
-<a href="index.php">Retour à l'accueil</a><br>
-<a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Perso</a><br>
-
-<?php
 //Requete SQL pour connaitre Id utilisateur
 require_once("fonctions.php");
 $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
@@ -34,6 +16,22 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
 $resultat = selectPerso($result[0]['Id_utilisateur']);
 setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/', '', false, false);
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<?php
+ include_once("head.php");
+ ?>
+    <title>Page Personnage</title>
+</head>
+<body>
+<header>
+<!-- Navigation -->
+<?php
+  include_once("menu.php");  
+?>
+</header>
 
 <table class="table table-hover table-dark">
     <thead>

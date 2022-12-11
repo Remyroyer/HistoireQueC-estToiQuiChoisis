@@ -21,6 +21,9 @@ if (isset($_SESSION['nomUser'])){
     <li class="nav-item">
       <a class="nav-link" href="histoire.php">Commencer une histoire</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="perso.php">Mes persos</a>
+    </li>
     <?php
 }else{
     ?>
@@ -34,7 +37,6 @@ if (isset($_SESSION['nomUser'])){
 }
 
 if(isset($_SESSION['ADMIN'])){
-  echo "SESSION ADMIN";
     if($_SESSION['ADMIN']==true){
         ?>
         <li class="nav-item">

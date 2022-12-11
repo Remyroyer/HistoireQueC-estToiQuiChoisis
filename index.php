@@ -22,34 +22,20 @@ if (isset($_POST["nomUser"])) {
     }
 }
 
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-          <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-          
-    <link rel="icon" type="img/png" href="img/favicon.jpg">
-    <link rel="stylesheet" href="style.css">
+    <?php
+ include_once("head.php");
+ ?>
   <title>Accueil</title>
 </head>
 <body>
 <header>
 <!-- Navigation -->
 <?php
-
   include_once("menu.php");  
-
 ?>
 </header>
 
@@ -97,7 +83,7 @@ if (!isset($_SESSION["emailUser"])) {
             echo "Bonjour, vous êtes un ADMIN!!!<br>";
             echo "<br>Admin <strong>" . $pseudo . " </strong> reconnu.";
         }else{
-           echo "Bonjour, " . $pseudo .".<br>"."<br>Nous sommes ravis de vous revoir sur notre site!";
+           echo "Bonjour, " . $pseudo .".<br>"."<br>Nous sommes ravis de vous voir sur notre site!";
         }
     }
 }
