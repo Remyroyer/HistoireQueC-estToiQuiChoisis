@@ -34,6 +34,7 @@ if (isset($_SESSION['nomUser'])){
 }
 
 if(isset($_SESSION['ADMIN'])){
+  echo "SESSION ADMIN";
     if($_SESSION['ADMIN']==true){
         ?>
         <li class="nav-item">

@@ -13,7 +13,20 @@ if (isset($_POST["nomUser"])) {
     $_SESSION["mdpUser"] = $_POST["mdpUser"];
     $_SESSION["pseudoUser"] = $_POST["pseudoUser"];
     $_SESSION["emailUser"] = $_POST["emailUser"];
+
+    require_once("fonctions.php");
+    $Menuadmin = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
+    if($Menuadmin[0]['admin'] == "1")
+    {
+        $_SESSION['ADMIN'] = true;
+    }
 }
+
+
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -53,6 +66,7 @@ if (!isset($_SESSION["emailUser"])) {
     //echo "<div>Bonjour, " . $_SESSION['emailUser'] . "</div>";
 
     //Sinon on utilise les infos dispo pour vérification du droit d'accés...
+    //require_once("fonctions.php");
     require_once("fonctions.php");
     $pseudo = selectUser($_SESSION['mdpUser'], $_SESSION['emailUser']);
 
@@ -67,15 +81,12 @@ if (!isset($_SESSION["emailUser"])) {
         
         echo "Erreur dans la saisie du mot de passe ou compte inexistant!!!"
         ?>
-        <!-- <form action="forminscription.php" method="POST">
-            <input type="submit" value="Je veux créer un compte">
-        </form> -->
-        
         <div><a href="index.php"><button class="bottom rounded-1 border border-none m-1">Je veux réessayer</button></a></div>
         <div><a href="forminscription.php"><button class="bottom rounded-1 border border-none m-1">Je veux créer un compte</button></a></div>
         <?php
     } else {
         //Si la vérification est positive, on redirige vers la page des histoires
+        require_once("fonctions.php");
         $admin = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
 
         if($admin[0]['actifUser'] != "1")
@@ -84,15 +95,7 @@ if (!isset($_SESSION["emailUser"])) {
             echo "Compte banni ou désactivé.";
         }elseif($admin[0]['admin']==1){
             echo "Bonjour, vous êtes un ADMIN!!!<br>";
-            ?>
-            <!--<a href="compte.php">Mon Compte</a>
-            <a href="histoire.php">Page des histoires</a> -->
-            <?php
-            $_SESSION['ADMIN'] = true;
             echo "<br>Admin <strong>" . $pseudo . " </strong> reconnu.";
-            //echo "<a href='adminhistoire.php'>Ajouter une histoire</a>";
-            //echo " / <a href='modifhistoire.php'>Modifier une histoire</a>";
-            //echo " / <a href='admincompte.php'>Voir les comptes utilisateurs</a>";
         }else{
            echo "Bonjour, " . $pseudo .".<br>"."<br>Nous sommes ravis de vous revoir sur notre site!";
         }
