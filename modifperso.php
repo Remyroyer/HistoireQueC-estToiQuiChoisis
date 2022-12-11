@@ -7,6 +7,10 @@ if (!isset($_SESSION['nomUser'])) {
     header('Location: index.php');
 }
 
+require_once("fonctions.php");
+$result = selectOnePerso($_POST['idPerso']);
+//var_dump($result);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,16 +21,12 @@ if (!isset($_SESSION['nomUser'])) {
     <title>Page Modification Personnage</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a><br>
-<a href="histoire.php">Page des histoires</a><br>
-<a href="compte.php">Mon Compte</a><br>
-
+<header>
+<!-- Navigation -->
 <?php
-require_once("fonctions.php");
-$result = selectOnePerso($_POST['idPerso']);
-//var_dump($result);
+  include_once("menu.php");  
 ?>
-
+</header>
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="img/simone.png" alt="image du perso">
     <div class="card-body">
@@ -42,7 +42,6 @@ $result = selectOnePerso($_POST['idPerso']);
         </form>
     </div>
 </div>
-
 
 </body>
 </html>

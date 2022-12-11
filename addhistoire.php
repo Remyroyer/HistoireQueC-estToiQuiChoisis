@@ -82,8 +82,6 @@ VALUES (:nomHistoire, :auteurHistoire, :descriptionHistoire, :genreHistoire, :ac
     }
     $connexion = deconnexion();
 
-
-
     //AJOUT LIEUX
     try {
 

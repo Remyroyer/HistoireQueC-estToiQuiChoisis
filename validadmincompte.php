@@ -17,7 +17,8 @@ if(!isset($_POST['Id_utilisateur'])){
         header('Location: admincompte.php');
     }
 
-
+    include_once("fonctions.php");
+    $result=selectIdutilisateur($_POST['Id_utilisateur']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,17 +29,15 @@ if(!isset($_POST['Id_utilisateur'])){
     <title>Visualisation des comptes utilisateurs</title>
 </head>
 <body>
-<a href="index.php">Accueil</a><br>
-<a href="admincompte.php">Retour aux comptes utilisateurs</a><br>
-
+<header>
+<!-- Navigation -->
 <?php
-include_once("fonctions.php");
-$result=selectIdutilisateur($_POST['Id_utilisateur']);
+  include_once("menu.php");  
 ?>
+</header>
+
 <div class="container">
-
 <form action="saveadmincompte.php" method="post">
-
 <div>
 <div class="row w-75 p-2">
     <div class="col-2">

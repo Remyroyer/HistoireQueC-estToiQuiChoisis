@@ -17,7 +17,9 @@ if (!isset($_POST['id_histoire'])&&!isset($_COOKIE['modifhistoire'])){
     header('Location: modifhistoire.php');
 }
 
-
+include_once("fonctions.php");
+$idhistoire=$_POST['id_histoire'];
+$result=affichagehistoire($idhistoire);
 
 ?>
 <!DOCTYPE html>
@@ -29,14 +31,13 @@ if (!isset($_POST['id_histoire'])&&!isset($_COOKIE['modifhistoire'])){
     <title>Modification des histoires</title>
 </head>
 <body>
-<a href="index.php">Accueil</a> / <a href='modifhistoire.php'>Modifier une histoire</a><br>
+<header>
+<!-- Navigation -->
 <?php
-
-include_once("fonctions.php");
-$idhistoire=$_POST['id_histoire'];
-$result=affichagehistoire($idhistoire);
+  include_once("menu.php");  
 ?>
-<br>
+</header>
+
 <div class="container">
 <div class="form-group row border border-dark p-2">
 <form action="histoiremodif.php" method="POST">

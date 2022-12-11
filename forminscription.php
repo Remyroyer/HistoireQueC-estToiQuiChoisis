@@ -12,7 +12,12 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
     <title>Formulaire de connexion</title>
 </head>
 <body>
-<a href="index.php">Retour à l'accueil</a>
+<header>
+<!-- Navigation -->
+<?php
+  include_once("menu.php");  
+?>
+</header>
 <div>
     <form action="index.php" method="POST">
         <input type="submit" value="J'ai déjà un compte">
