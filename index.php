@@ -16,10 +16,12 @@ if (isset($_POST["nomUser"])) {
 
     require_once("fonctions.php");
     $Menuadmin = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
-    if($Menuadmin[0]['admin'] == "1")
-    {
-        $_SESSION['ADMIN'] = true;
-    }
+   if(isset($Menuadmin[0]['admin'])){
+        if($Menuadmin[0]['admin'] == "1")
+        {
+            $_SESSION['ADMIN'] = true;
+        }
+}
 }
 
 ?>
@@ -92,10 +94,42 @@ if (!isset($_SESSION["emailUser"])) {
 </div>
 <!-- Fin de la div ROW-->
 </div>
+<br>
+<?php
+if (isset($_SESSION["emailUser"])) {
+    ?>
+   <!--Ici, il y a une autre div--> 
+<div class="row">
+		<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+       
+        </div>
+		<div class="titleframe3 col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+        <?php
 
-<div>
-<!--Ici, il y a une autre div-->
+    echo "Quoi tu veux faire?";
+?>
 </div>
+	</div>
+	<div class="row">
+		<button class="choice1 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center"><a class="nav-link" href="compte.php">Accéder à mon compte</a></button>
+		<button class="choice2 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center"><a class="nav-link" href="perso.php">Accéder à mes persos</a></button>
+	</div>
+	<div class="row">
+		<button class="choice3 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center">
+            <a href="mailto:sebrou01@gmail.com?cc=remyroyer@gamil.com,&subject=Mail envoyé depuis notre Website&body=Bonjour, ">Nous contacter</a>
+        </button>
+		<button class="choice4 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center"><a class="nav-link" href="histoire.php">Commencer une histoire</a></button>
+	</div>
+	<div class="row">
+		<div class="titleframe2 col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 text-center"><h6>🍌🥸POWERED BY AdaM&DeV🥸🍌</h6></div>
+		<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"></div>
+	</div>
+</div>
+<?php
+}
+?>
+
+
 
 <!-- Fin de la div container-->
 </div>
@@ -139,7 +173,49 @@ if (!isset($_SESSION["emailUser"])) {
                     .titleframe{
                         background-color: rgba(255,255,255,.50);
                         border-top-left-radius: 15px;
+                        /* height: 8em; */
                     }
+                    .titleframe2{
+                        background-color: rgba(255,255,255,.50);
+                        border-bottom-right-radius: 15px;
+                        height: auto;
+                        padding-top: 5px;
+                    }
+
+                    .titleframe3{
+                        background-color: rgba(255,255,255,.50);
+                        border-top-left-radius: 15px;
+                        height: 12em;
+                        margin-top: auto;
+                    }
+                    .choice1,.choice2,.choice3,.choice4{
+                        box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        height: 6em;
+                        opacity:75%;
+                        -webkit-box-shadow: 6px 4px 15px 0px rgba(164,152,153,0.5); 
+                        box-shadow: 6px 4px 15px 0px rgba(164,152,153,0.5);
+                    }
+                    .choice1{
+                        border-bottom: 0.15rem solid darkgoldenrod;
+                    }
+                    .choice2{
+                        border-left: .15px solid darkgoldenrod;
+                    }
+                    .choice3{
+                        border-right: .15px solid darkgoldenrod;
+                    }
+                    .choice4{
+                        border-top: .15px solid darkgoldenrod;
+                    }
+                   
+a:link, a:visited {
+  text-decoration: none;
+  
+}
+
+
                 </style>
 
 

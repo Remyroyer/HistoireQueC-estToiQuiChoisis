@@ -6,7 +6,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 if (!isset($_SESSION['nomUser'])) {
     header('Location: index.php');
 }
-
+//Affichage des infos utilisateur
+require_once("fonctions.php");
+$result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,16 +25,16 @@ if (!isset($_SESSION['nomUser'])) {
   include_once("menu.php");  
 ?>
 </header>
-<?php
 
-//Affichage des infos utilisateur
-require_once("fonctions.php");
-$result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
-?>
+
+
+<div class="container">
+
 <form action="modifcompte.php" method="POST">
     <div class="card" style="width: 20rem;">
-
-        <img src="<?php echo $result[0]['imgUser']; ?>" class="card-img-top" alt="Avatar du joueur" height=200>
+<div style="width: 5rem;">
+        <img src="img/<?php echo $result[0]['imgUser']; ?>" class="card-img-top" alt="Avatar du joueur" background-size= contains>
+        </div>   
         <div class="card-body">
             <h5 class="card-title">Nom : <input type="text" name="nom" size="20"
                                                 value="<?php echo $result[0]['nomUser']; ?>"
@@ -71,9 +73,9 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
 </form>
 </div>
 </div>
+</div>
 
-<?php
-?>
+
 
 </body>
 </html>
