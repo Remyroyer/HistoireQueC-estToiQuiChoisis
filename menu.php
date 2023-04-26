@@ -22,7 +22,7 @@ if (isset($_SESSION['nomUser'])){
       <a class="nav-link" href="histoire.php">Commencer une histoire</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="perso.php">Mes persos</a>
+      <a class="nav-link" href="perso.php?vue=1">Mes persos</a>
     </li>
     <?php
 }else{

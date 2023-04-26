@@ -39,8 +39,12 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
         <th scope="col">#</th>
         <th scope="col">Nom du perso</th>
         <th scope="col">Sexe du perso</th>
-        <th scope="col">Choisir ce perso</th>
-        <th scope="col">Modifier ce perso</th>
+        <?php
+        if (!isset($_GET["vue"])){
+            echo "<th scope='col'>Choisir ce perso</th>";
+        }
+        ?>
+           <th scope='col'>Modifier ce perso</th>
         <th scope="col">Supprimer ce perso</th>
     </tr>
     </thead>
@@ -58,7 +62,11 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
                            hidden><?php echo $resultat[$a]['nomPerso']; ?></td>
                 <td><input name="sexePerso" value="<?php echo $resultat[$a]['sexePerso']; ?>"
                            hidden><?php echo $resultat[$a]['sexePerso']; ?></td>
-                <td><input type="submit"></td>
+                           <?php 
+                           if (!isset($_GET["vue"])){
+                            echo "<td><input type='submit'></td>";
+                           }
+                           ?>
                 <input type="text" name="debuthistoire"
                        value="true" hidden></td>
             </form>
@@ -86,7 +94,10 @@ setcookie('idUtilisateur', $result[0]['Id_utilisateur'], time() + 3600 * 24, '/'
             <td><input name="sexePerso" value="Femelle"></td>
             <td><input type="submit"></td>
             <td></td>
-            <td></td>
+            <?php if (!isset($_GET["vue"])){
+            echo "<td></td>";
+            }
+            ?>
         </form>
     </tr>
     </tbody>

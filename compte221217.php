@@ -28,16 +28,41 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
 
 <div class="container-fluid">
 	<div class="row">
-    <div class="col-1 p-2"><h1 class="m-2 text-white"></h1></div>
-		<div class="titleframe col-11 p-1 shadow border">
+    <div class="col-5 col-sm-5 col-md-8 col-lg-8 col-xl-8 p-2"><h1 class="m-2 text-white"></h1></div>
+		<div class="titleframe col-7 col-sm-7 col-md-4 col-lg-4 col-xl-4 order-1 p-1 shadow border">
+        </div>
+        </div>
+        </div>
+        </div>
 
-        <form action="modifcompte.php" method="POST">
-<div class="imgcont p-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container bg-secondary">
+<form action="modifcompte.php" method="POST">
+    <div class="card" style="width: 20rem;">
+<div class="p-1" style="width: 6rem;">
         <img src="img/<?php echo $result[0]['imgUser']; ?>" class="card-img-top" alt="Avatar du joueur" background-size= contains>
         </div>
         <div class="">
             <input type='file' name="newImg">
         </div>
+        <div class="simone card-body">
             <h5 class="card-title">Nom : <input type="text" name="nom" size="20"
                                                 value="<?php echo $result[0]['nomUser']; ?>"
                                                 disabled="disabled"></h5>
@@ -50,7 +75,7 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
             <p class="card-text">Nouveau mot de passe : <input type="password" name="mdp1" size="24"></p>
             <p class="card-text">Confirmation : <input type="password" name="mdp2" size="24"></p>
             <p class="card-text">Date de création : <input type="text" name="date" size="7"
-                                                           value="<?php echo date('d-m-y',strtotime($result[0]['dateCreationUser'])); ?>"
+                                                           value="<?php echo $result[0]['dateCreationUser']; ?>"
                                                            disabled="disabled"></p>
             <?php
             // echo $result[0]['actifUser'];
@@ -73,19 +98,7 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
 
             <input type="submit" class="btn btn-primary">
 </form>
-
-
-
-
-
         </div>
-        </div>
-        </div>
-        </div>
-
-
-
-
             <style>
                                 body {
                                 background: url("img/equipiers.png") no-repeat center center fixed;
@@ -99,20 +112,6 @@ $result = selectCompte($_SESSION['mdpUser'], $_SESSION['emailUser']);
                         background-color: rgba(255,255,255,.50);
                         border-top-left-radius: 15px;
                         /* height: 8em; */
-                    }
-
-                    @media (min-width: 992px) {
-                        .imgcont{
-                            width: 5rem;
-                    }
-                    }
-
-                  
-                    @media (min-width: 1200px) {
-                        .imgcont{
-                            width: 8rem;
-                            /* translate: 250px 250px; */
-                    }
                     }
 
             </style>

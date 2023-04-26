@@ -112,7 +112,7 @@ if (isset($_SESSION["emailUser"])) {
 	</div>
 	<div class="row">
 		<button class="choice1 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center"><a class="nav-link" href="compte.php">Accéder à mon compte</a></button>
-		<button class="choice2 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center"><a class="nav-link" href="perso.php">Accéder à mes persos</a></button>
+		<button class="choice2 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center"><a class="nav-link" href="perso.php?vue=1">Accéder à mes persos</a></button>
 	</div>
 	<div class="row">
 		<button class="choice3 col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 bg-warning text-center">

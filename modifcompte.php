@@ -21,7 +21,6 @@ if (!isset($_SESSION['nomUser'])) {
 <?php
 
 
-//En cas de compte rendu inactif, il faut lui demander de valider!!!!
 
 //Vérification si mot de passe modifié correctement ou pas modifié
 if (isset($_POST['mdp']) && !empty($_POST['mdp1']) && $_POST['mdp1'] == $_POST['mdp2'] && $_POST['mdp'] == $_SESSION["mdpUser"]) {
